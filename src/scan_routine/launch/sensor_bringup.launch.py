@@ -42,7 +42,7 @@ def generate_launch_description():
             'enable_ir_auto_exposure': 'true', # Production: Auto-exposure enabled for robust tracking
             'ir_exposure': '12000', # Production: Max exposure capped at 12ms (12000 us)
             'sync_mode': 'SECONDARY', # Hardware Secondary (Strict Triggered Slave)
-            'time_domain': 'global', # Hardware timestamps regressed to host system clock epoch
+            'time_domain': 'system', # Hardware arrival timestamps matched to Linux system clock epoch
             'color_width': '1280',
             'color_height': '800',
             'color_fps': '30',

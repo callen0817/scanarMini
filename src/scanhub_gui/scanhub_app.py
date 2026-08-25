@@ -143,6 +143,17 @@ class Ros2BridgeWorker(QThread):
         self.calib_z_m = 0.0
         self.load_extrinsic_config()
 
+        # M12.3 3D Colorized Point Cloud Map Accumulator
+        self.is_session_recording = False
+        self.session_start_epoch = 0.0
+        self.session_duration = 0.0
+        self.voxel_size_m = 0.03
+        self.inv_voxel = 1.0 / self.voxel_size_m
+        self.accumulated_3d_voxels = {} # (gx, gy, gz) -> [sx, sy, sz, n, sr, sg, sb, n_rgb]
+        self.total_raw_points_accumulated = 0
+        self.total_raw_rgb_observations = 0
+        self.session_sweeps_count = 0
+
     def load_extrinsic_config(self):
         cfg_path = "/home/scanar/scanarMini/config/calibrated_extrinsics.json"
         if os.path.exists(cfg_path):
@@ -260,25 +271,36 @@ class Ros2BridgeWorker(QThread):
                 self.diag_recorder.log_lidar(sec, num_points)
 
         def registered_cloud_callback(msg: PointCloud2):
-            """FAST-LIVO2 Registered Cloud Callback: Points are ALREADY in the SLAM World Frame."""
+            """FAST-LIVO2 / Colorizer Registered Cloud Callback: Points are ALREADY in the SLAM World Frame."""
             try:
                 num_points = msg.width * msg.height
                 if num_points == 0 or msg.point_step < 12:
                     return
 
                 raw_bytes = bytes(msg.data)
-                dt = np.dtype({
-                    'names': ['x', 'y', 'z'],
-                    'formats': ['<f4', '<f4', '<f4'],
-                    'offsets': [0, 4, 8],
-                    'itemsize': msg.point_step
-                })
+                has_rgb_field = (msg.point_step >= 16)
+                if has_rgb_field:
+                    dt = np.dtype({
+                        'names': ['x', 'y', 'z', 'rgb'],
+                        'formats': ['<f4', '<f4', '<f4', '<f4'],
+                        'offsets': [0, 4, 8, 12],
+                        'itemsize': msg.point_step
+                    })
+                else:
+                    dt = np.dtype({
+                        'names': ['x', 'y', 'z'],
+                        'formats': ['<f4', '<f4', '<f4'],
+                        'offsets': [0, 4, 8],
+                        'itemsize': msg.point_step
+                    })
+
                 pts = np.frombuffer(raw_bytes, dtype=dt)
                 valid = np.isfinite(pts['x']) & np.isfinite(pts['y']) & np.isfinite(pts['z'])
                 pts_valid = pts[valid]
                 if len(pts_valid) == 0:
                     return
 
+                # 1. 2D HUD Slice Emission
                 rel_z = pts_valid['z'] - self.current_z
                 h_mask = (rel_z >= -0.5) & (rel_z < 1.0)
                 pts_filtered = pts_valid[h_mask]
@@ -287,6 +309,53 @@ class Ros2BridgeWorker(QThread):
                     sampled = pts_filtered[::stride]
                     xy = np.column_stack((sampled['x'], sampled['y'])).astype(np.float32)
                     self.registered_pointcloud_received.emit(xy)
+
+                # 2. 3D World-Frame Accumulation during Active Capture
+                if self.is_session_recording:
+                    self.session_sweeps_count += 1
+                    xyz = np.column_stack((pts_valid['x'], pts_valid['y'], pts_valid['z'])).astype(np.float64)
+                    if has_rgb_field:
+                        rgb_int = pts_valid['rgb'].view(np.uint32)
+                        r = ((rgb_int >> 16) & 0xFF).astype(np.float64)
+                        g = ((rgb_int >> 8) & 0xFF).astype(np.float64)
+                        b = (rgb_int & 0xFF).astype(np.float64)
+                        has_real_rgb = ~((r == 160.0) & (g == 160.0) & (b == 160.0))
+                    else:
+                        r = np.full(len(xyz), 160.0)
+                        g = np.full(len(xyz), 160.0)
+                        b = np.full(len(xyz), 160.0)
+                        has_real_rgb = np.zeros(len(xyz), dtype=bool)
+
+                    self.total_raw_points_accumulated += len(xyz)
+                    self.total_raw_rgb_observations += int(np.sum(has_real_rgb))
+
+                    gx = np.floor(xyz[:, 0] * self.inv_voxel).astype(np.int32)
+                    gy = np.floor(xyz[:, 1] * self.inv_voxel).astype(np.int32)
+                    gz = np.floor(xyz[:, 2] * self.inv_voxel).astype(np.int32)
+
+                    for i in range(len(xyz)):
+                        key = (int(gx[i]), int(gy[i]), int(gz[i]))
+                        px, py, pz = xyz[i]
+                        ri, gi, bi = r[i], g[i], b[i]
+                        is_col = bool(has_real_rgb[i])
+
+                        if key not in self.accumulated_3d_voxels:
+                            if is_col:
+                                self.accumulated_3d_voxels[key] = [px, py, pz, 1, ri, gi, bi, 1]
+                            else:
+                                self.accumulated_3d_voxels[key] = [px, py, pz, 1, 160.0, 160.0, 160.0, 0]
+                        else:
+                            rec = self.accumulated_3d_voxels[key]
+                            rec[0] += px
+                            rec[1] += py
+                            rec[2] += pz
+                            rec[3] += 1
+                            if is_col:
+                                rec[4] += ri
+                                rec[5] += gi
+                                rec[6] += bi
+                                rec[7] += 1
+
             except Exception as e:
                 print(f"[STAGE 5 ERROR] Registered Cloud Error: {e}")
 
@@ -434,6 +503,9 @@ class Ros2BridgeWorker(QThread):
         sub_registered = node.create_subscription(PointCloud2, "/cloud_registered", registered_cloud_callback, qos_profile_sensor_data)
         print(f"[STAGE 3] Subscribed: /cloud_registered | Publishers on Graph: {node.count_publishers('/cloud_registered')}")
 
+        sub_registered_rgb = node.create_subscription(PointCloud2, "/cloud_registered_rgb", registered_cloud_callback, qos_profile_sensor_data)
+        print(f"[STAGE 3] Subscribed: /cloud_registered_rgb | Publishers on Graph: {node.count_publishers('/cloud_registered_rgb')}")
+
         sub_imu = node.create_subscription(Imu, "/rslidar_imu_data", imu_callback, qos_profile_sensor_data)
         print(f"[STAGE 3] Subscribed: /rslidar_imu_data | Publishers on Graph: {node.count_publishers('/rslidar_imu_data')}")
 
@@ -488,6 +560,216 @@ class Ros2BridgeWorker(QThread):
                 self.rtk_status_received.emit(sync_code, sync_label)
 
         node.destroy_node()
+
+    def start_recording_session(self):
+        self.accumulated_3d_voxels.clear()
+        self.total_raw_points_accumulated = 0
+        self.total_raw_rgb_observations = 0
+        self.session_sweeps_count = 0
+        self.session_start_epoch = time.time()
+        self.is_session_recording = True
+
+    def stop_recording_session(self):
+        self.is_session_recording = False
+        self.session_duration = time.time() - self.session_start_epoch if self.session_start_epoch > 0 else 0.0
+
+    def export_production_dataset(self, save_dir, dataset_name, trajectory, flash_anchors):
+        os.makedirs(save_dir, exist_ok=True)
+        n_voxels = len(self.accumulated_3d_voxels)
+        xyz = np.empty((n_voxels, 3), dtype=np.float32)
+        rgb = np.empty((n_voxels, 3), dtype=np.uint8)
+        colored_count = 0
+
+        for idx, (k, v) in enumerate(self.accumulated_3d_voxels.items()):
+            cnt = v[3]
+            xyz[idx] = [v[0] / cnt, v[1] / cnt, v[2] / cnt]
+            rgb_cnt = v[7]
+            if rgb_cnt > 0:
+                colored_count += 1
+                cr = np.clip(v[4] / rgb_cnt, 0.0, 255.0)
+                cg = np.clip(v[5] / rgb_cnt, 0.0, 255.0)
+                cb = np.clip(v[6] / rgb_cnt, 0.0, 255.0)
+                rgb[idx] = [int(round(cr)), int(round(cg)), int(round(cb))]
+            else:
+                rgb[idx] = [160, 160, 160]
+
+        coverage_pct = (colored_count / n_voxels * 100.0) if n_voxels > 0 else 0.0
+
+        # Helper PLY writer
+        def write_ply(filename, pts_xyz, pts_rgb=None):
+            n = len(pts_xyz)
+            if pts_rgb is not None:
+                header = (
+                    "ply\n"
+                    "format binary_little_endian 1.0\n"
+                    f"element vertex {n}\n"
+                    "property float x\n"
+                    "property float y\n"
+                    "property float z\n"
+                    "property uchar red\n"
+                    "property uchar green\n"
+                    "property uchar blue\n"
+                    "end_header\n"
+                ).encode('ascii')
+                dt = np.dtype([
+                    ('x', '<f4'), ('y', '<f4'), ('z', '<f4'),
+                    ('r', 'u1'), ('g', 'u1'), ('b', 'u1')
+                ])
+                arr = np.empty(n, dtype=dt)
+                arr['x'] = pts_xyz[:, 0]
+                arr['y'] = pts_xyz[:, 1]
+                arr['z'] = pts_xyz[:, 2]
+                arr['r'] = pts_rgb[:, 0]
+                arr['g'] = pts_rgb[:, 1]
+                arr['b'] = pts_rgb[:, 2]
+            else:
+                header = (
+                    "ply\n"
+                    "format binary_little_endian 1.0\n"
+                    f"element vertex {n}\n"
+                    "property float x\n"
+                    "property float y\n"
+                    "property float z\n"
+                    "end_header\n"
+                ).encode('ascii')
+                dt = np.dtype([
+                    ('x', '<f4'), ('y', '<f4'), ('z', '<f4')
+                ])
+                arr = np.empty(n, dtype=dt)
+                arr['x'] = pts_xyz[:, 0]
+                arr['y'] = pts_xyz[:, 1]
+                arr['z'] = pts_xyz[:, 2]
+
+            with open(filename, 'wb') as f:
+                f.write(header)
+                f.write(arr.tobytes())
+
+        # Helper PCD writer
+        def write_pcd(filename, pts_xyz, pts_rgb=None):
+            n = len(pts_xyz)
+            if pts_rgb is not None:
+                r = pts_rgb[:, 0].astype(np.uint32)
+                g = pts_rgb[:, 1].astype(np.uint32)
+                b = pts_rgb[:, 2].astype(np.uint32)
+                rgb_packed_int = (r << 16) | (g << 8) | b
+                rgb_packed_float = rgb_packed_int.view(np.float32)
+
+                header = (
+                    "# .PCD v0.7 - Point Cloud Data file format\n"
+                    "VERSION 0.7\n"
+                    "FIELDS x y z rgb\n"
+                    "SIZE 4 4 4 4\n"
+                    "TYPE F F F F\n"
+                    "COUNT 1 1 1 1\n"
+                    f"WIDTH {n}\n"
+                    "HEIGHT 1\n"
+                    "VIEWPOINT 0 0 0 1 0 0 0\n"
+                    f"POINTS {n}\n"
+                    "DATA binary\n"
+                ).encode('ascii')
+
+                dt = np.dtype([
+                    ('x', '<f4'), ('y', '<f4'), ('z', '<f4'),
+                    ('rgb', '<f4')
+                ])
+                arr = np.empty(n, dtype=dt)
+                arr['x'] = pts_xyz[:, 0]
+                arr['y'] = pts_xyz[:, 1]
+                arr['z'] = pts_xyz[:, 2]
+                arr['rgb'] = rgb_packed_float
+            else:
+                header = (
+                    "# .PCD v0.7 - Point Cloud Data file format\n"
+                    "VERSION 0.7\n"
+                    "FIELDS x y z\n"
+                    "SIZE 4 4 4\n"
+                    "TYPE F F F\n"
+                    "COUNT 1 1 1\n"
+                    f"WIDTH {n}\n"
+                    "HEIGHT 1\n"
+                    "VIEWPOINT 0 0 0 1 0 0 0\n"
+                    f"POINTS {n}\n"
+                    "DATA binary\n"
+                ).encode('ascii')
+
+                dt = np.dtype([
+                    ('x', '<f4'), ('y', '<f4'), ('z', '<f4')
+                ])
+                arr = np.empty(n, dtype=dt)
+                arr['x'] = pts_xyz[:, 0]
+                arr['y'] = pts_xyz[:, 1]
+                arr['z'] = pts_xyz[:, 2]
+
+            with open(filename, 'wb') as f:
+                f.write(header)
+                f.write(arr.tobytes())
+
+        # 1. Binary PLY XYZ + RGB
+        write_ply(os.path.join(save_dir, "pointcloud_map_rgb.ply"), xyz, rgb)
+
+        # 2. Binary PCD XYZ + RGB
+        write_pcd(os.path.join(save_dir, "pointcloud_map_rgb.pcd"), xyz, rgb)
+
+        # 3. Uncolored Geometry PLY
+        write_ply(os.path.join(save_dir, "pointcloud_map.ply"), xyz, None)
+
+        # 4. Uncolored Geometry PCD
+        write_pcd(os.path.join(save_dir, "pointcloud_map.pcd"), xyz, None)
+
+        # 5. Trajectory CSV & TUM
+        traj_csv = os.path.join(save_dir, "trajectory.csv")
+        traj_tum = os.path.join(save_dir, "trajectory_tum.txt")
+        with open(traj_csv, "w") as f_csv, open(traj_tum, "w") as f_tum:
+            f_csv.write("index,x_m,y_m,yaw_deg\n")
+            for idx, (tx, ty, tyaw) in enumerate(trajectory):
+                f_csv.write(f"{idx},{tx:.4f},{ty:.4f},{tyaw:.2f}\n")
+                f_tum.write(f"{idx * 0.1:.4f} {tx:.4f} {ty:.4f} 0.0000 0.0 0.0 {math.sin(math.radians(tyaw)/2.0):.4f} {math.cos(math.radians(tyaw)/2.0):.4f}\n")
+
+        # 6. Flash Anchors JSON
+        anchors_json = os.path.join(save_dir, "flash_anchors.json")
+        with open(anchors_json, "w") as f_anchors:
+            json.dump(flash_anchors, f_anchors, indent=2)
+
+        # 7. Metadata JSON
+        meta_json = os.path.join(save_dir, "scan_metadata.json")
+        meta_data = {
+            "session_id": str(dataset_name),
+            "export_timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+            "capture_duration_seconds": float(round(self.session_duration, 2)),
+            "total_sweeps_recorded": int(self.session_sweeps_count),
+            "total_raw_points_accumulated": int(self.total_raw_points_accumulated),
+            "total_raw_rgb_observations": int(self.total_raw_rgb_observations),
+            "final_voxel_map_points": int(n_voxels),
+            "final_points_with_rgb": int(colored_count),
+            "accumulated_rgb_coverage_percent": float(round(coverage_pct, 2)),
+            "voxel_resolution_m": float(self.voxel_size_m),
+            "spatial_bounding_box": {
+                "x_min_m": float(xyz[:, 0].min()) if n_voxels > 0 else 0.0,
+                "x_max_m": float(xyz[:, 0].max()) if n_voxels > 0 else 0.0,
+                "y_min_m": float(xyz[:, 1].min()) if n_voxels > 0 else 0.0,
+                "y_max_m": float(xyz[:, 1].max()) if n_voxels > 0 else 0.0,
+                "z_min_m": float(xyz[:, 2].min()) if n_voxels > 0 else 0.0,
+                "z_max_m": float(xyz[:, 2].max()) if n_voxels > 0 else 0.0,
+            },
+            "calibration_provenance": {
+                "extrinsic_T_rgb_airy_lidar": [0.023855, 0.014534, -0.055265],
+                "extrinsic_R_rgb_airy_lidar_row_major": [
+                    0.000350, -0.999997,  0.002377,
+                    -0.001316, -0.002378, -0.999996,
+                    0.999999,  0.000347, -0.001317
+                ],
+                "rgb_camera_intrinsics_K": [609.006531, 0.0, 643.868774, 0.0, 609.015625, 399.326538, 0.0, 0.0, 1.0],
+                "rgb_camera_distortion_D": [-0.03113378, 0.03646491, 0.00048966, -0.00030747, -0.01320058],
+                "lidar_model": "RoboSense Airy 192 (10Hz Master)",
+                "imu_model": "RoboSense Internal IMU (200Hz)",
+                "camera_model": "Orbbec Gemini 336L RGB (30Hz Slave, 1280x800)",
+                "slam_backend": "FAST-LIVO2 (Pure LIO Tracking)"
+            }
+        }
+        with open(meta_json, "w") as f_meta:
+            json.dump(meta_data, f_meta, indent=2)
+
+        return meta_data
 
     def stop(self):
         self.running = False
@@ -1777,6 +2059,7 @@ class ScanHUBOS(QWidget):
             self.console.append(f"[ERROR] Failed to start FAST-LIVO2 SLAM engine: {str(e)}")
 
         self.is_recording = True
+        self.ros_worker.start_recording_session()
         self.update_button_states()
 
         if self.diagnostic_mode_enabled:
@@ -1803,6 +2086,7 @@ class ScanHUBOS(QWidget):
 
     def stop_mapping_session(self):
         self.console.append("[INFO] Finalizing capture session...")
+        self.ros_worker.stop_recording_session()
         if self.mapping_process and self.mapping_process.state() == QProcess.ProcessState.Running:
             self.console.append("[FAST-LIVO2] Stopping FAST-LIVO2 SLAM engine...")
             self.mapping_process.terminate()
@@ -1846,46 +2130,27 @@ class ScanHUBOS(QWidget):
         
         self.console.append(f"\n[SAVE] Exporting and saving captured point cloud data for session: {dataset}...")
         
-        # 1. Export Trajectory CSV and TUM format
-        traj_csv = os.path.join(save_dir, "trajectory.csv")
-        traj_tum = os.path.join(save_dir, "trajectory_tum.txt")
         try:
-            with open(traj_csv, "w") as f_csv, open(traj_tum, "w") as f_tum:
-                f_csv.write("index,x_m,y_m,yaw_deg\n")
-                for idx, (tx, ty, tyaw) in enumerate(self.map_canvas.trajectory_path):
-                    f_csv.write(f"{idx},{tx:.4f},{ty:.4f},{tyaw:.2f}\n")
-                    f_tum.write(f"{idx * 0.1:.4f} {tx:.4f} {ty:.4f} 0.0000 0.0 0.0 {math.sin(math.radians(tyaw)/2.0):.4f} {math.cos(math.radians(tyaw)/2.0):.4f}\n")
-            self.console.append(f"[SAVE] Exported SLAM trajectory: {traj_csv}")
-        except Exception as e:
-            self.console.append(f"[SAVE ERROR] Trajectory export failed: {e}")
+            meta = self.ros_worker.export_production_dataset(
+                save_dir=save_dir,
+                dataset_name=dataset,
+                trajectory=self.map_canvas.trajectory_path,
+                flash_anchors=self.map_canvas.flash_anchors
+            )
+            n_pts = meta.get("final_voxel_map_points", 0)
+            n_rgb = meta.get("final_points_with_rgb", 0)
+            pct_rgb = meta.get("accumulated_rgb_coverage_percent", 0.0)
 
-        # 2. Export FARO Flash Anchors JSON
-        anchors_json = os.path.join(save_dir, "flash_anchors.json")
-        try:
-            with open(anchors_json, "w") as f_anchors:
-                json.dump(self.map_canvas.flash_anchors, f_anchors, indent=2)
-            self.console.append(f"[SAVE] Exported {len(self.map_canvas.flash_anchors)} Flash Anchors: {anchors_json}")
+            self.console.append(f"[SAVE] Exported pointcloud_map_rgb.ply (XYZ+RGB): {n_pts} voxels ({pct_rgb:.1f}% RGB)")
+            self.console.append(f"[SAVE] Exported pointcloud_map_rgb.pcd (XYZ+RGB): {n_pts} points")
+            self.console.append(f"[SAVE] Exported pointcloud_map.ply & pointcloud_map.pcd (Geometry)")
+            self.console.append(f"[SAVE] Exported trajectory.csv, trajectory_tum.txt, flash_anchors.json")
+            self.console.append(f"[SAVE] Exported scan_metadata.json (Provenance & Calibration)")
+            self.console.append(f"[SAVE] Dataset saved successfully! Path: {save_dir}/")
+            self.progress_label.setText(f"🎉 DATASET SAVED: /home/scanar/scanarMini/data/{dataset}/")
+            self.progress_label.setStyleSheet("color: #38d9a9; font-weight: bold;")
         except Exception as e:
-            self.console.append(f"[SAVE ERROR] Anchors export failed: {e}")
-
-        # 3. Export Persistent Point Cloud Map (.ply)
-        ply_file = os.path.join(save_dir, "pointcloud_map.ply")
-        try:
-            pts = list(self.map_canvas.voxel_map) if self.map_canvas.voxel_map else self.map_canvas.accumulated_points
-            with open(ply_file, "w") as f_ply:
-                f_ply.write("ply\nformat ascii 1.0\n")
-                f_ply.write(f"element vertex {len(pts)}\n")
-                f_ply.write("property float x\nproperty float y\nproperty float z\n")
-                f_ply.write("end_header\n")
-                for wx, wy in pts:
-                    f_ply.write(f"{wx:.3f} {wy:.3f} 0.000\n")
-            self.console.append(f"[SAVE] Exported point cloud map: {ply_file} ({len(pts)} points)")
-        except Exception as e:
-            self.console.append(f"[SAVE ERROR] PLY export failed: {e}")
-
-        self.console.append(f"[SAVE] Dataset saved successfully! Path: {save_dir}/")
-        self.progress_label.setText(f"🎉 DATASET SAVED: /home/scanar/scanarMini/data/{dataset}/")
-        self.progress_label.setStyleSheet("color: #38d9a9; font-weight: bold;")
+            self.console.append(f"[SAVE ERROR] Dataset export failed: {e}")
 
     def rename_dataset(self):
         old_dataset = self.data_input.text().strip().replace(" ", "_")

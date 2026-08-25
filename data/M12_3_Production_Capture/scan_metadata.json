@@ -1,0 +1,60 @@
+{
+  "session_id": "M12_3_Production_Capture",
+  "export_timestamp": "2026-08-25T03:21:51Z",
+  "capture_duration_seconds": 20.2,
+  "total_sweeps_recorded": 88,
+  "total_raw_points_accumulated": 3132275,
+  "total_raw_rgb_observations": 193192,
+  "final_voxel_map_points": 45818,
+  "final_points_with_rgb": 4224,
+  "accumulated_rgb_coverage_percent": 9.22,
+  "voxel_resolution_m": 0.03,
+  "spatial_bounding_box": {
+    "x_min_m": -1.982609748840332,
+    "x_max_m": 2.108347177505493,
+    "y_min_m": -8.621028900146484,
+    "y_max_m": 1.9010725021362305,
+    "z_min_m": -2.182403564453125,
+    "z_max_m": -0.00780152203515172
+  },
+  "calibration_provenance": {
+    "extrinsic_T_rgb_airy_lidar": [
+      0.023855,
+      0.014534,
+      -0.055265
+    ],
+    "extrinsic_R_rgb_airy_lidar_row_major": [
+      0.00035,
+      -0.999997,
+      0.002377,
+      -0.001316,
+      -0.002378,
+      -0.999996,
+      0.999999,
+      0.000347,
+      -0.001317
+    ],
+    "rgb_camera_intrinsics_K": [
+      609.006531,
+      0.0,
+      643.868774,
+      0.0,
+      609.015625,
+      399.326538,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "rgb_camera_distortion_D": [
+      -0.03113378,
+      0.03646491,
+      0.00048966,
+      -0.00030747,
+      -0.01320058
+    ],
+    "lidar_model": "RoboSense Airy 192 (10Hz Master)",
+    "imu_model": "RoboSense Internal IMU (200Hz)",
+    "camera_model": "Orbbec Gemini 336L RGB (30Hz Slave, 1280x800)",
+    "slam_backend": "FAST-LIVO2 (Pure LIO Tracking)"
+  }
+}

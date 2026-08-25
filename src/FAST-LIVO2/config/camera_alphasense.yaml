@@ -1,0 +1,23 @@
+/**:
+  ros__parameters:
+    camera:
+      cam_model: Pinhole
+      # Alphasense Core cam0 — Sony IMX287 0.4MP global shutter
+      # Intrinsics from calibration_handheld/calibration_cams.yaml
+      # IMPORTANT: distortion_model is equidistant (fisheye k1..k4), NOT radtan.
+      # FAST-LIVO2 treats cam_d0..d3 as radtan (k1,k2,p1,p2), which is
+      # incorrect for equidistant. Images should be pre-undistorted, or
+      # FAST-LIVO2 should be built with equidistant support.
+      # For initial testing with low-distortion regions, these values are
+      # usable as an approximation.
+      cam_width: 720
+      cam_height: 540
+      scale: 1.0
+      cam_fx: 351.31400364193297
+      cam_fy: 351.4911744656785
+      cam_cx: 367.8522793375995
+      cam_cy: 253.8402144980996
+      cam_d0: -0.03696737352869157
+      cam_d1: -0.008917880497032812
+      cam_d2: 0.008912969593422046
+      cam_d3: -0.0037685977496087313

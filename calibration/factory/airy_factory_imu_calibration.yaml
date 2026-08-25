@@ -1,0 +1,22 @@
+# RoboSense Airy Factory LiDAR-IMU Calibration Registry
+# This file defines the immutable calibration loaded directly from the sensor's DIFOP telemetry.
+# Sensor S/N: 030000003009
+
+metadata:
+  sensor_sn: "030000003009"
+  difop_byte_offset: 1092
+  provenance_note: "Loaded from active sensor EEPROM/DIFOP packets. Do not run FAST-Calib to re-estimate."
+
+factory_parameters:
+  quaternion_xyzw: [0.71145386, -0.70271838, 0.00187877, 0.00409371]
+  translation_m: [0.00425000, 0.00418000, -0.00446000]
+  quaternion_norm: 1.000000002
+
+# Transform matrix from IMU to LiDAR frame
+# p_lidar = T_airy_lidar_airy_imu * p_imu
+T_airy_lidar_airy_imu:
+  matrix:
+    - [ 0.012367,  -0.999919,  -0.003080,   0.004250 ]
+    - [-0.999888,  -0.012340,  -0.008465,   0.004180 ]
+    - [ 0.008427,   0.003184,  -0.999959,  -0.004460 ]
+    - [ 0.000000,   0.000000,   0.000000,   1.000000 ]

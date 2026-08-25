@@ -1,0 +1,107 @@
+/**:
+  ros__parameters:
+    common:
+      img_topic: "/cam0/image_raw"
+      lid_topic: "/rslidar_points"
+      imu_topic: "/rslidar_imu_data"
+      img_en: 0           # VIO -> 0: Pure LIO for M10; 1: Full LIVO for M13
+      lidar_en: 1
+      ros_driver_bug_fix: false
+
+    extrin_calib:
+      # RoboSense Airy Internal IMU Factory DIFOP Calibration
+      # Translation from LiDAR origin expressed in IMU frame (meters)
+      extrinsic_T: [0.004164, 0.004315, -0.004411]
+      # Rotation from LiDAR frame to IMU frame (Row-major R_imu_from_lidar)
+      extrinsic_R: [ 0.012366, -0.999888,  0.008426,
+                    -0.999919, -0.012340,  0.003184,
+                    -0.003079, -0.008465, -0.999959]
+      # Rotation Camera (cam0 optical) from LiDAR (rslidar) -> Rcl = R_cam_from_lidar
+      Rcl: [ 0.000000, -1.000000,  0.000000,
+             0.000000,  0.000000, -1.000000,
+             1.000000,  0.000000,  0.000000]
+      # Position Camera from LiDAR (meters) -> Pcl = t_cam_from_lidar
+      Pcl: [0.047640, 0.014311, -0.055700]
+
+    time_offset: 
+      imu_time_offset: 0.0
+      img_time_offset: 0.0  # Hardware STROBE/TIMER_SYNC active (0.0s baseline)
+      exposure_time_init: 0.0
+
+    preprocess:
+      point_filter_num: 2
+      filter_size_surf: 0.05
+      lidar_type: 7 # Robosense LiDAR
+      scan_line: 192 # Assuming 32 lines for typical Robosense, adjust as needed (e.g., 16, 32, 128)
+      blind: 0.6
+
+    vio:
+      max_iterations: 5
+      outlier_threshold: 300 # was 150
+      img_point_cov: 100 # was 300
+      patch_size: 8
+      patch_pyrimid_level: 4
+      normal_en: true
+      raycast_en: false
+      inverse_composition_en: false
+      exposure_estimate_en: true
+      inv_expo_cov: 0.1
+
+    imu:
+      imu_en: true
+      imu_int_frame: 30
+      acc_cov: 0.1
+      gyr_cov: 0.1
+      b_acc_cov: 0.0001
+      b_gyr_cov: 0.0001
+
+    lio:
+      max_iterations: 8
+      dept_err: 0.02
+      beam_err: 0.05
+      min_eigen_value: 0.005
+      voxel_size: 0.5
+      max_layer: 2
+      max_points_num: 50
+      layer_init_num: [5, 5, 5, 5, 5]
+
+    local_map:  
+      map_sliding_en: false
+      half_map_size: 100
+      sliding_thresh: 8.0
+
+    uav:
+      imu_rate_odom: false
+      gravity_align_en: false
+
+    publish:
+      dense_map_en: true
+      pub_effect_point_en: false 
+      pub_plane_en: false
+      pub_scan_num: 1
+      blind_rgb_points: 0.0
+
+    evo:
+      seq_name: "robosense_test"
+      pose_output_en: false
+
+    pcd_save:
+      pcd_save_en: false
+      colmap_output_en: false
+      filter_size_pcd: 0.05
+      interval: -1
+
+
+# Full-Size Target Crop
+# A: [-1.115921, -0.630140, -1.149668]
+# B: [-1.274951, 0.613096, -1.055735]
+# C: [-0.386844, -0.493784, -1.430924]
+# D: [-0.532429, 0.690045, -1.258503]
+# distance filter: X: 0.12 to 1.30 | Y: -1.52 to 0.05 | Z: 0.17 to 0.65
+
+# Half-Size Target Crop
+# A: [-1.236905, -0.401632, -1.437297]
+# B: [-1.332935, 0.330936, -1.397532]
+# C: [-0.870809, -0.326667, -1.559201]
+# D: [-0.935532, 0.380392, -1.516064]
+# distance filter: X: 0.02 to 0.80 | Y: -1.31 to -0.23 | Z: 0.03 to 0.34

@@ -1,0 +1,1126 @@
+# =========================================================================
+# scanarMini PROVENANCE MANIFEST - COPY-ONLY FROM scanR
+# Timestamp: 2026-08-23T05:28:19.551249
+# Source Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+# =========================================================================
+
+Source Path: scanR/src/scanhub_gui/test_paint3.py
+Destination Path: scanarMini/src/scanhub_gui/test_paint3.py
+SHA-256: f42d9a958fb337dd75bde7c3adf0888a6dc8299fbe79fb397f8aa178486f2755
+Copy Timestamp: 2026-08-23T05:28:19.553289
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Original scanhub Qt GUI app to be adapted
+--------------------------------------------------------------------------------
+Source Path: scanR/src/scanhub_gui/test_paint2.py
+Destination Path: scanarMini/src/scanhub_gui/test_paint2.py
+SHA-256: f62f6961e95dac2160779cb53601cef7c94ca3a9d088b89a4932af8177a36ffd
+Copy Timestamp: 2026-08-23T05:28:19.553951
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Original scanhub Qt GUI app to be adapted
+--------------------------------------------------------------------------------
+Source Path: scanR/src/scanhub_gui/launch_scanhub.sh
+Destination Path: scanarMini/src/scanhub_gui/launch_scanhub.sh
+SHA-256: fd43236177ae42ef66f09f4e3def240fd084ffe2cfcd4e6f37632f9520168578
+Copy Timestamp: 2026-08-23T05:28:19.554699
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Original scanhub Qt GUI app to be adapted
+--------------------------------------------------------------------------------
+Source Path: scanR/src/scanhub_gui/test_profile.py
+Destination Path: scanarMini/src/scanhub_gui/test_profile.py
+SHA-256: ac3e86a22c047f18511e8cde48eb195b69d5a5c8876b3890d7fc8b3637885798
+Copy Timestamp: 2026-08-23T05:28:19.555422
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Original scanhub Qt GUI app to be adapted
+--------------------------------------------------------------------------------
+Source Path: scanR/src/scanhub_gui/storage_monitor.py
+Destination Path: scanarMini/src/scanhub_gui/storage_monitor.py
+SHA-256: f22c8c6e4164904f636837ece85f690f626606fa2d2d27bb8584109bbca293a3
+Copy Timestamp: 2026-08-23T05:28:19.556162
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Original scanhub Qt GUI app to be adapted
+--------------------------------------------------------------------------------
+Source Path: scanR/src/scanhub_gui/test_profile4.py
+Destination Path: scanarMini/src/scanhub_gui/test_profile4.py
+SHA-256: 90210ed9fc6b5dc2d86074de0c6375501066dc0d43cd33036b00b90495ac7dab
+Copy Timestamp: 2026-08-23T05:28:19.556769
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Original scanhub Qt GUI app to be adapted
+--------------------------------------------------------------------------------
+Source Path: scanR/src/scanhub_gui/test_paint.py
+Destination Path: scanarMini/src/scanhub_gui/test_paint.py
+SHA-256: c52a9e49a47bcde19258ab05c0efe8cdd65d8edce8de4e1a87ce3a3c18aabfba
+Copy Timestamp: 2026-08-23T05:28:19.557275
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Original scanhub Qt GUI app to be adapted
+--------------------------------------------------------------------------------
+Source Path: scanR/src/scanhub_gui/scanhub_app.py
+Destination Path: scanarMini/src/scanhub_gui/scanhub_app.py
+SHA-256: c4835712559128e64186d5f23e9f11b5cb6b0bc7d0f69bea47a8a306f2b03499
+Copy Timestamp: 2026-08-23T05:28:19.558134
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Original scanhub Qt GUI app to be adapted
+--------------------------------------------------------------------------------
+Source Path: scanR/src/scanhub_gui/sensor_monitor.py
+Destination Path: scanarMini/src/scanhub_gui/sensor_monitor.py
+SHA-256: 91111372b69301ec102222eaec9f4a36c129f675565048828bbffa30f821da12
+Copy Timestamp: 2026-08-23T05:28:19.559061
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Original scanhub Qt GUI app to be adapted
+--------------------------------------------------------------------------------
+Source Path: scanR/src/scanhub_gui/test_frame.py
+Destination Path: scanarMini/src/scanhub_gui/test_frame.py
+SHA-256: ccf280cf0d7ced05d10a9e38f931f1acc96db79528a49b63bb563d216f033823
+Copy Timestamp: 2026-08-23T05:28:19.559788
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Original scanhub Qt GUI app to be adapted
+--------------------------------------------------------------------------------
+Source Path: scanR/src/scanhub_gui/diagnostic_recorder.py
+Destination Path: scanarMini/src/scanhub_gui/diagnostic_recorder.py
+SHA-256: d5412a9b6a1420febaaf772f22d7171d9d524cf8f47ddb1fbf52597419a189d8
+Copy Timestamp: 2026-08-23T05:28:19.560910
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Original scanhub Qt GUI app to be adapted
+--------------------------------------------------------------------------------
+Source Path: scanR/src/scanhub_gui/diagnostic_analyzer.py
+Destination Path: scanarMini/src/scanhub_gui/diagnostic_analyzer.py
+SHA-256: 96e221766a417a88ef4251ae3d927c804b3a9f4761bbd5fb97add2d7b25ff6a1
+Copy Timestamp: 2026-08-23T05:28:19.561663
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Original scanhub Qt GUI app to be adapted
+--------------------------------------------------------------------------------
+Source Path: scanR/src/scanhub_gui/__init__.py
+Destination Path: scanarMini/src/scanhub_gui/__init__.py
+SHA-256: 6ba88486532b10d3814acaeac4fe0809f26da5815a0b87ed0faca021f9dd0374
+Copy Timestamp: 2026-08-23T05:28:19.562258
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Original scanhub Qt GUI app to be adapted
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/CMakeLists.txt
+Destination Path: scanarMini/src/FAST-LIVO2/CMakeLists.txt
+SHA-256: 5d82117f116cfe15c66e3744e7ac43095bdca13de712d7619449d1f30a8054e8
+Copy Timestamp: 2026-08-23T05:28:19.563408
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/README.md
+Destination Path: scanarMini/src/FAST-LIVO2/README.md
+SHA-256: 4b7ac9e745c46e78c3d77c2d0923dba9c833d4997452f944ce08a3166818835f
+Copy Timestamp: 2026-08-23T05:28:19.563900
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/LICENSE
+Destination Path: scanarMini/src/FAST-LIVO2/LICENSE
+SHA-256: 8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643
+Copy Timestamp: 2026-08-23T05:28:19.564681
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/package.xml
+Destination Path: scanarMini/src/FAST-LIVO2/package.xml
+SHA-256: 5ebef10a5c189be6df7f430392a1d4341b4a33de7dee33984eb19a19cb196f8c
+Copy Timestamp: 2026-08-23T05:28:19.565112
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/include/voxel_map.h
+Destination Path: scanarMini/src/FAST-LIVO2/include/voxel_map.h
+SHA-256: 4efc48967c10a8a9ecdb46d2f2a4ce6bda193847a6f2f037705352512b56d130
+Copy Timestamp: 2026-08-23T05:28:19.565793
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/include/IMU_Processing.h
+Destination Path: scanarMini/src/FAST-LIVO2/include/IMU_Processing.h
+SHA-256: 78f5b0bf7664856d7adf86292998c4534614f0dfe59bb2317f7f8e29ab313896
+Copy Timestamp: 2026-08-23T05:28:19.566175
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/include/vio.h
+Destination Path: scanarMini/src/FAST-LIVO2/include/vio.h
+SHA-256: a8eee18edf253e37ac073fc8559536e250ed9e1bf70265e79e4328d976f35915
+Copy Timestamp: 2026-08-23T05:28:19.566669
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/include/common_lib.h
+Destination Path: scanarMini/src/FAST-LIVO2/include/common_lib.h
+SHA-256: 7b936106168f11c85a7cbf1b647c09457f97d1b9c2f1d97bb7f8898c616a3014
+Copy Timestamp: 2026-08-23T05:28:19.567065
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/include/LIVMapper.h
+Destination Path: scanarMini/src/FAST-LIVO2/include/LIVMapper.h
+SHA-256: 95dbc8560ed46323b5d8a217a377185aba396b21c9425b4894529ff83e3e3cb1
+Copy Timestamp: 2026-08-23T05:28:19.567668
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/include/frame.h
+Destination Path: scanarMini/src/FAST-LIVO2/include/frame.h
+SHA-256: 91a7ff427c0fb1e12220d4e60ac0ea9ed0785c1ae73c8da98c14ebe2f9782fa6
+Copy Timestamp: 2026-08-23T05:28:19.568033
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/include/preprocess.h
+Destination Path: scanarMini/src/FAST-LIVO2/include/preprocess.h
+SHA-256: e70ab6ab82c35e4cafa8974708b44d548bd880c14e760a5ebea03f175e59a80d
+Copy Timestamp: 2026-08-23T05:28:19.568487
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/include/feature.h
+Destination Path: scanarMini/src/FAST-LIVO2/include/feature.h
+SHA-256: 27eaea6a52e4d0edc9aa04a770a5f436eb129b4c4fbfc7bf9812c5fd3f644799
+Copy Timestamp: 2026-08-23T05:28:19.568848
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/include/visual_point.h
+Destination Path: scanarMini/src/FAST-LIVO2/include/visual_point.h
+SHA-256: c528be4967454ff79f6aac0c5322d62b19ec34c7e8c248b49981d1b3a7f1888d
+Copy Timestamp: 2026-08-23T05:28:19.569190
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/include/utils/color.h
+Destination Path: scanarMini/src/FAST-LIVO2/include/utils/color.h
+SHA-256: a8dca85646b18e26432f453993cf2da8de8e6b6e3184228b9fb92651c4a8f2ef
+Copy Timestamp: 2026-08-23T05:28:19.569755
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/include/utils/so3_math.h
+Destination Path: scanarMini/src/FAST-LIVO2/include/utils/so3_math.h
+SHA-256: fa815b3bc8dc157a2ab8d692b0dd604b369680a7e711fef666f4e12d4ab33c37
+Copy Timestamp: 2026-08-23T05:28:19.570126
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/include/utils/types.h
+Destination Path: scanarMini/src/FAST-LIVO2/include/utils/types.h
+SHA-256: ade63d344d8d4cdec2dd8ec0fd6ea7930cb007c9c41ba83500bc7ea79d874d45
+Copy Timestamp: 2026-08-23T05:28:19.570542
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/include/utils/utils.h
+Destination Path: scanarMini/src/FAST-LIVO2/include/utils/utils.h
+SHA-256: 53e212cc56c9f7627bc9a58cae906b9fe9bb334184b28a1b6f8a2821e2ebf3e8
+Copy Timestamp: 2026-08-23T05:28:19.570908
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/config/MARS_LVIG.yaml
+Destination Path: scanarMini/src/FAST-LIVO2/config/MARS_LVIG.yaml
+SHA-256: f76f2dca850e1b77197ee50c99da89b9f58ab8ad9b09bdfca78dc076034834a2
+Copy Timestamp: 2026-08-23T05:28:19.571481
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/config/camera_alphasense.yaml
+Destination Path: scanarMini/src/FAST-LIVO2/config/camera_alphasense.yaml
+SHA-256: 1974f81768bede327516b08eac9cd83719f3a8fc068f4888901e56c5bce245db
+Copy Timestamp: 2026-08-23T05:28:19.571807
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/config/robosense.yaml
+Destination Path: scanarMini/src/FAST-LIVO2/config/robosense.yaml
+SHA-256: e3edf5c91354b05583e6951fb3811319ea0a64ef3d8ec8205c9b3958f7862da5
+Copy Timestamp: 2026-08-23T05:28:19.572212
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/config/hesai_pandarxt32.yaml
+Destination Path: scanarMini/src/FAST-LIVO2/config/hesai_pandarxt32.yaml
+SHA-256: b1fcd65d748cf8252e1e8617491a970fa9f8ea6f4970327c7e6f63a88161de6c
+Copy Timestamp: 2026-08-23T05:28:19.577549
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/config/camera_pinhole.yaml
+Destination Path: scanarMini/src/FAST-LIVO2/config/camera_pinhole.yaml
+SHA-256: a90b90cf6e7658ba4fb110ea0a2c76c0c53de895ba640917030e0bb7cd2d649c
+Copy Timestamp: 2026-08-23T05:28:19.578075
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/config/camera_MARS_LVIG.yaml
+Destination Path: scanarMini/src/FAST-LIVO2/config/camera_MARS_LVIG.yaml
+SHA-256: 2ab5bb16e09f7cfcf2d18aa5ab89f45b9b08cd5a7e0b75435b90bf27959cc963
+Copy Timestamp: 2026-08-23T05:28:19.578505
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/config/camera_robosense.yaml
+Destination Path: scanarMini/src/FAST-LIVO2/config/camera_robosense.yaml
+SHA-256: 27963c0c5444371637f86050f26b012b14a78ebe4c46c3efd7e823cc875ac8b1
+Copy Timestamp: 2026-08-23T05:28:19.578877
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/config/avia.yaml
+Destination Path: scanarMini/src/FAST-LIVO2/config/avia.yaml
+SHA-256: ef8d71621728e23e9e5e83c4fd2f448d14976c2d7918a9044b66d5c4948daede
+Copy Timestamp: 2026-08-23T05:28:19.579231
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/pics/Framework.png
+Destination Path: scanarMini/src/FAST-LIVO2/pics/Framework.png
+SHA-256: 53eae5f32174cfd8bc4be8094883e7f667ac972feb8a13ee3bc7d6fb28993029
+Copy Timestamp: 2026-08-23T05:28:19.585465
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/pics/debug_error.png
+Destination Path: scanarMini/src/FAST-LIVO2/pics/debug_error.png
+SHA-256: b8a53a3148e74e4eb30ba2492d29ca31c6d8126004b6212126a1acc4531db048
+Copy Timestamp: 2026-08-23T05:28:19.586833
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/pics/rosgraph.png
+Destination Path: scanarMini/src/FAST-LIVO2/pics/rosgraph.png
+SHA-256: 21378308e630caba16227b74931d282221e88a5d1b14110dc7de893dd33d8941
+Copy Timestamp: 2026-08-23T05:28:19.587964
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/Supplementary/LIVO2_supplementary.pdf
+Destination Path: scanarMini/src/FAST-LIVO2/Supplementary/LIVO2_supplementary.pdf
+SHA-256: 93bf9c03a1c80e06d0845d82fdc95a1d4a7b7873205b0840f10b61d0f2897aff
+Copy Timestamp: 2026-08-23T05:28:19.642548
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/Log/mat_out.txt
+Destination Path: scanarMini/src/FAST-LIVO2/Log/mat_out.txt
+SHA-256: 13f2f7603889f1e9110796bba182acd7d442d527027a00dc4b58196e15faa2e3
+Copy Timestamp: 2026-08-23T05:28:19.646884
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/Log/imu.txt
+Destination Path: scanarMini/src/FAST-LIVO2/Log/imu.txt
+SHA-256: 2d6ba444c9908d18381ed24a105bc40d1bb18e244327422ae3a7f221dcb46512
+Copy Timestamp: 2026-08-23T05:28:19.648215
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/Log/mat_pre.txt
+Destination Path: scanarMini/src/FAST-LIVO2/Log/mat_pre.txt
+SHA-256: 157553672dae9ecc67ea788c0c767e20094fb8e04da1c107e4bacc6fb58d9e68
+Copy Timestamp: 2026-08-23T05:28:19.648839
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/Log/PCD/all_downsampled_points.pcd
+Destination Path: scanarMini/src/FAST-LIVO2/Log/PCD/all_downsampled_points.pcd
+SHA-256: 9c6d06efa0a5471f1bd3a1f92c29a66349a856d2f5bf6fe35f302525c910a74b
+Copy Timestamp: 2026-08-23T05:28:20.048850
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/Log/PCD/all_raw_points.zip
+Destination Path: scanarMini/src/FAST-LIVO2/Log/PCD/all_raw_points.zip
+SHA-256: 5ba8e3721a3ae51f08f9f4c2e11adcff3a91867bc8db319ef68a79e65b173a4d
+Copy Timestamp: 2026-08-23T05:28:22.470258
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/Log/PCD/all_raw_points.pcd
+Destination Path: scanarMini/src/FAST-LIVO2/Log/PCD/all_raw_points.pcd
+SHA-256: 9c6d06efa0a5471f1bd3a1f92c29a66349a856d2f5bf6fe35f302525c910a74b
+Copy Timestamp: 2026-08-23T05:28:22.869554
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/Log/PCD/half_size_target.pcd
+Destination Path: scanarMini/src/FAST-LIVO2/Log/PCD/half_size_target.pcd
+SHA-256: fd094f01b9672eec8361af5b70c9c22fe56f2616cb8908db36575df8dfdb6000
+Copy Timestamp: 2026-08-23T05:28:27.502662
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/Log/PCD/full_size/all_downsampled_points.pcd
+Destination Path: scanarMini/src/FAST-LIVO2/Log/PCD/full_size/all_downsampled_points.pcd
+SHA-256: 6b4ca830205289662f849d3cf2b07e54fd21ddb8e842556955fe3efcb943c821
+Copy Timestamp: 2026-08-23T05:28:27.510877
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/Log/PCD/full_size/all_raw_points.pcd
+Destination Path: scanarMini/src/FAST-LIVO2/Log/PCD/full_size/all_raw_points.pcd
+SHA-256: 5dd4a7177871c7015291d610e5a15f0fa168ccb17f85d907d9c1b76f0d5ba1bf
+Copy Timestamp: 2026-08-23T05:28:31.828714
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/src/IMU_Processing.cpp
+Destination Path: scanarMini/src/FAST-LIVO2/src/IMU_Processing.cpp
+SHA-256: 2558005b624e44df9b98fc9b43ed6d02dd25db1fea8499076c7dafa04d816291
+Copy Timestamp: 2026-08-23T05:28:31.837606
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/src/utils.cpp
+Destination Path: scanarMini/src/FAST-LIVO2/src/utils.cpp
+SHA-256: 3e0aeaccaf94d7a5e44af952027ddda88f8e3787580b942af5b2db66ff0705d3
+Copy Timestamp: 2026-08-23T05:28:31.842796
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/src/frame.cpp
+Destination Path: scanarMini/src/FAST-LIVO2/src/frame.cpp
+SHA-256: d45bb8ab1edf065089515940d0c7d6ff2c08fe460143778f62f09547e63f489a
+Copy Timestamp: 2026-08-23T05:28:31.843570
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/src/vio.cpp
+Destination Path: scanarMini/src/FAST-LIVO2/src/vio.cpp
+SHA-256: 5786aeca9a26c796953430d471d5428279a5590c084b07dc945647aa88048911
+Copy Timestamp: 2026-08-23T05:28:31.844724
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/src/LIVMapper.cpp
+Destination Path: scanarMini/src/FAST-LIVO2/src/LIVMapper.cpp
+SHA-256: 33ce5d4430428217115573b06957263a810e93540de154186cc7c067bbee2a30
+Copy Timestamp: 2026-08-23T05:28:31.845572
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/src/visual_point.cpp
+Destination Path: scanarMini/src/FAST-LIVO2/src/visual_point.cpp
+SHA-256: d067e2b05445835cbbb4c8a159519bf4a01a271b96d06cc3a32419092b3fcc6e
+Copy Timestamp: 2026-08-23T05:28:31.846011
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/src/preprocess.cpp
+Destination Path: scanarMini/src/FAST-LIVO2/src/preprocess.cpp
+SHA-256: 08474a7b7f1f8348bc1258d49be01ec5bea532fcc62b654f1cffa038ecd777aa
+Copy Timestamp: 2026-08-23T05:28:31.846847
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/src/main.cpp
+Destination Path: scanarMini/src/FAST-LIVO2/src/main.cpp
+SHA-256: 658d9316b9bdf9481b0ab890461bdcfd55a8034a9150278772dbe3b7820f56e1
+Copy Timestamp: 2026-08-23T05:28:31.847615
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/src/voxel_map.cpp
+Destination Path: scanarMini/src/FAST-LIVO2/src/voxel_map.cpp
+SHA-256: 2fab1f068df424565c18d6449015c971586086cc5a51e526cd56d8a7308e3b71
+Copy Timestamp: 2026-08-23T05:28:31.848476
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/scripts/colmap_output.sh
+Destination Path: scanarMini/src/FAST-LIVO2/scripts/colmap_output.sh
+SHA-256: 4fce0add323e4087f30e44162b3035e2fcbd108c9807336cf5a2f13fd890582d
+Copy Timestamp: 2026-08-23T05:28:31.849216
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/scripts/mesh.py
+Destination Path: scanarMini/src/FAST-LIVO2/scripts/mesh.py
+SHA-256: 7b7ad6d4dc8b448378dc8e4b32da599bc6aa6b5052138808d2ee6b2d2c3c4cd6
+Copy Timestamp: 2026-08-23T05:28:31.849729
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/launch/mapping_scanR.launch.py
+Destination Path: scanarMini/src/FAST-LIVO2/launch/mapping_scanR.launch.py
+SHA-256: 1629358d6dbb8b538497d164b709a9b358cfe88c06d13836daa861583136e8df
+Copy Timestamp: 2026-08-23T05:28:31.850225
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/launch/mapping_avia.launch.py
+Destination Path: scanarMini/src/FAST-LIVO2/launch/mapping_avia.launch.py
+SHA-256: 6397b4b942d39272de37f118e3be0814c2ca7e95a42c3918d7db6d554a6bac93
+Copy Timestamp: 2026-08-23T05:28:31.850750
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/launch/mapping_robosense.launch.py
+Destination Path: scanarMini/src/FAST-LIVO2/launch/mapping_robosense.launch.py
+SHA-256: 1c48f79409cf2879e565991f3f205d120be5b64ba86bbaada6b9df4f8cee0873
+Copy Timestamp: 2026-08-23T05:28:31.851234
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/launch/mapping_avia_marslvig.launch.py
+Destination Path: scanarMini/src/FAST-LIVO2/launch/mapping_avia_marslvig.launch.py
+SHA-256: 6e0d174df460bd72a661a2b1d2074d71da43f1263244a104787223030931b4b9
+Copy Timestamp: 2026-08-23T05:28:31.851654
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/rviz_cfg/M300.rviz
+Destination Path: scanarMini/src/FAST-LIVO2/rviz_cfg/M300.rviz
+SHA-256: e105d66215c46d6ec0683e8822dc9532fa818afab97b4ec3c889f00ec49aae2a
+Copy Timestamp: 2026-08-23T05:28:31.852582
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/FAST-LIVO2/rviz_cfg/fast_livo2.rviz
+Destination Path: scanarMini/src/FAST-LIVO2/rviz_cfg/fast_livo2.rviz
+SHA-256: 7ab648e254601f057fa173fc627b385800711fbd49afadc2f56fa8c09eee2fdc
+Copy Timestamp: 2026-08-23T05:28:31.853218
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Tightly-coupled LIVO SLAM package
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/README.md
+Destination Path: scanarMini/src/rpg_vikit/README.md
+SHA-256: 95796a6048e0ac805d9563e074a126985507f4648022158c0061cd7937194035
+Copy Timestamp: 2026-08-23T05:28:31.854073
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/CMakeLists.txt
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/CMakeLists.txt
+SHA-256: d97b95a5c4753467c28efa1982eed3f8e7b320049dbf6a1fa33a9403b34f33a4
+Copy Timestamp: 2026-08-23T05:28:31.854677
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/vikit_commonConfig.cmake.in
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/vikit_commonConfig.cmake.in
+SHA-256: 21e6b479e0e3a3445df5a4757a34d3d11ee1053b738dbbe263b8a45d84634766
+Copy Timestamp: 2026-08-23T05:28:31.855215
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/package.xml
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/package.xml
+SHA-256: f43819ad9eb360a56381349c844301ba1e89a70332c42cc47ecafe8e2586b61d
+Copy Timestamp: 2026-08-23T05:28:31.855724
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/include/vikit/blender_utils.h
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/include/vikit/blender_utils.h
+SHA-256: 5a44888d757e5770b25bc24fe0eba1bb11d82c8069b1376cf4008f3e64e29f90
+Copy Timestamp: 2026-08-23T05:28:31.856669
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/include/vikit/homography.h
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/include/vikit/homography.h
+SHA-256: 34fc060c9fe28cb07b1937ca98a86e59b67abe081efd81e76f79f28679dff9ec
+Copy Timestamp: 2026-08-23T05:28:31.857200
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/include/vikit/math_utils.h
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/include/vikit/math_utils.h
+SHA-256: 62ed5df27222e102e3d5154e2f3df304b899d9c2ffa9828da89ee906e2ac6c95
+Copy Timestamp: 2026-08-23T05:28:31.857634
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/include/vikit/robust_cost.h
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/include/vikit/robust_cost.h
+SHA-256: a3fba95865bf375b61d5c43c230d3a1a2875d75b7aea6f7ab9a143b562a2bb71
+Copy Timestamp: 2026-08-23T05:28:31.858119
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/include/vikit/user_input_thread.h
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/include/vikit/user_input_thread.h
+SHA-256: 35e6af2e5ccaa549406f2eda96442a602662ab6f8456f4dc78dcbd8160d51f93
+Copy Timestamp: 2026-08-23T05:28:31.858550
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/include/vikit/vision.h
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/include/vikit/vision.h
+SHA-256: 3eb356780a61c5e50c95fbbb35fe8b75379513b5b9857732ddcc3979234ddd13
+Copy Timestamp: 2026-08-23T05:28:31.859093
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/include/vikit/img_align.h
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/include/vikit/img_align.h
+SHA-256: ef96a140facbba762c7622f5fe5c1621e1b944d27daacb9b2435f0e7255de17b
+Copy Timestamp: 2026-08-23T05:28:31.859621
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/include/vikit/omni_camera.h
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/include/vikit/omni_camera.h
+SHA-256: cefbfb60ed09ed8aca02868c90bda01c2915a2a14efc6f6882144e99139e0984
+Copy Timestamp: 2026-08-23T05:28:31.860112
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/include/vikit/performance_monitor.h
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/include/vikit/performance_monitor.h
+SHA-256: 938422e337cc3d60311f29b30094b735f984a302e432f2b8ff855643e0f0bfcf
+Copy Timestamp: 2026-08-23T05:28:31.860555
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/include/vikit/file_reader.h
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/include/vikit/file_reader.h
+SHA-256: fd2ce7e74ac56ed446a036370ce20eff02b8e49cd856c8ef8a8f956b12a97298
+Copy Timestamp: 2026-08-23T05:28:31.861010
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/include/vikit/pinhole_camera.h
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/include/vikit/pinhole_camera.h
+SHA-256: 9a12133411fee6cb0475a296974c9505d6c5474faffadf302b37d8baa60d22f2
+Copy Timestamp: 2026-08-23T05:28:31.861448
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/include/vikit/timer.h
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/include/vikit/timer.h
+SHA-256: af3d62462ae241c3c011fca0acd0eb53bed583000dbbb127528807fe7d59cb0e
+Copy Timestamp: 2026-08-23T05:28:31.861826
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/include/vikit/sample.h
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/include/vikit/sample.h
+SHA-256: 8811171bf10eb43c45df2a5cdaf073cf58a1b27ca5a1532ffb41ef0eef942441
+Copy Timestamp: 2026-08-23T05:28:31.862206
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/include/vikit/polynomial_camera.h
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/include/vikit/polynomial_camera.h
+SHA-256: eb7e4983f5c2bc2b5ca7a11f77095139e8a115b1283d395a13fc0f1e73cb6077
+Copy Timestamp: 2026-08-23T05:28:31.862663
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/include/vikit/atan_camera.h
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/include/vikit/atan_camera.h
+SHA-256: e8177a2efc11f2440257e232ea2f0b4ee590fba20349367a81ea81a2fd21df7a
+Copy Timestamp: 2026-08-23T05:28:31.863230
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/include/vikit/aligned_mem.h
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/include/vikit/aligned_mem.h
+SHA-256: 5d2e6c67f25b14c4d9ea719cb1624b8bcaff55cb2bd8a90673c111e3e5014d12
+Copy Timestamp: 2026-08-23T05:28:31.863629
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/include/vikit/file_reader_types.h
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/include/vikit/file_reader_types.h
+SHA-256: bf15b33a08d9b9dc57296b2b4bf702433db96511ea54cd522a7f224064e8d57b
+Copy Timestamp: 2026-08-23T05:28:31.863987
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/include/vikit/equidistant_camera.h
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/include/vikit/equidistant_camera.h
+SHA-256: fc1e265bbaddfb641f81e9faa0551babb373eb9b758744eb36e481082ee635b4
+Copy Timestamp: 2026-08-23T05:28:31.864504
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/include/vikit/abstract_camera.h
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/include/vikit/abstract_camera.h
+SHA-256: ecfe3f35bece1e25884cba598807da4215048feca856325663f27736db3c2f07
+Copy Timestamp: 2026-08-23T05:28:31.864904
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/include/vikit/patch_score.h
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/include/vikit/patch_score.h
+SHA-256: e5a5273b3e72851c06738ee09e92b92e41d4b1d464d7b98b5364d37834e347bf
+Copy Timestamp: 2026-08-23T05:28:31.865457
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/include/vikit/nlls_solver_impl.hpp
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/include/vikit/nlls_solver_impl.hpp
+SHA-256: 04c0d1adf6004058e2ed1bfa0b9473a2e08867ba97bd3f360043ca42ebb20f2e
+Copy Timestamp: 2026-08-23T05:28:31.865937
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/include/vikit/nlls_solver.h
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/include/vikit/nlls_solver.h
+SHA-256: c96b54177b8b131c28a1733d1c6e1619f4608921307b1500cde2ea88569963da
+Copy Timestamp: 2026-08-23T05:28:31.866408
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/include/vikit/ringbuffer.h
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/include/vikit/ringbuffer.h
+SHA-256: 44768985302cb02681a235cfc2e17a82004fea4161b6132518b716eb3009165c
+Copy Timestamp: 2026-08-23T05:28:31.866901
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/test/test_camera.cpp
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/test/test_camera.cpp
+SHA-256: e9e536e99af321bb07f2096c61991bebd279c8a6a841ca3e60822cdc0bcb7afb
+Copy Timestamp: 2026-08-23T05:28:31.867585
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/test/test_triangulation.cpp
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/test/test_triangulation.cpp
+SHA-256: 2029a105912aea9aee06365cdc961b5353aed928fb6e270e052b08b6bfb411c3
+Copy Timestamp: 2026-08-23T05:28:31.867991
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/test/test_patch_score.cpp
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/test/test_patch_score.cpp
+SHA-256: dabcae9fcbdb0132f8afb15f438882ed22849f6dd904c7756edf7b1b27d3446c
+Copy Timestamp: 2026-08-23T05:28:31.868411
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/test/data/scene_000.png
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/test/data/scene_000.png
+SHA-256: 01bd4b3f1ef29db79e3d14aa3da505591cf81780a94312a38d9d5e2247aeb43a
+Copy Timestamp: 2026-08-23T05:28:31.871487
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/CMakeModules/FindEigen.cmake
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/CMakeModules/FindEigen.cmake
+SHA-256: 254bdb9194cb0fb016102d09fdf62ac18294da2bdfbac54aa65b06e526571991
+Copy Timestamp: 2026-08-23T05:28:31.872299
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/src/robust_cost.cpp
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/src/robust_cost.cpp
+SHA-256: 6d6efd847b11abc00cc69049b409ba825f94119721ac28ebaad3f429216e13bc
+Copy Timestamp: 2026-08-23T05:28:31.872812
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/src/pinhole_camera.cpp
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/src/pinhole_camera.cpp
+SHA-256: df3fbf1147a6369ec9a8b0071b3407ff08a4b44d1e0aead9d5fe9182c82ef9d9
+Copy Timestamp: 2026-08-23T05:28:31.873150
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/src/omni_camera.cpp
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/src/omni_camera.cpp
+SHA-256: fda861a0d4bed32f7c7edaeac9325cdc2ebaebd6f42f977b5b2facfab105c835
+Copy Timestamp: 2026-08-23T05:28:31.873554
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/src/math_utils.cpp
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/src/math_utils.cpp
+SHA-256: 348f9c25992e2879bd83b900912065525a9a203447d4c2165e596308aecc78cf
+Copy Timestamp: 2026-08-23T05:28:31.873903
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/src/equidistant_camera.cpp
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/src/equidistant_camera.cpp
+SHA-256: ca1a7a83fabd63a70ba1c4a9e101c66b93db909937c7d012de5d7fbc06a8163a
+Copy Timestamp: 2026-08-23T05:28:31.874230
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/src/polynomial_camera.cpp
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/src/polynomial_camera.cpp
+SHA-256: c2e3b30ac021a9eac6d3a8d06186799b5b0dff161419fc6a8a9ac022a0755aee
+Copy Timestamp: 2026-08-23T05:28:31.874568
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/src/vision.cpp
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/src/vision.cpp
+SHA-256: 2e58d660128e1ce63302b99ee35d557d46f17acb36f064553dc6c3dd27c4b05b
+Copy Timestamp: 2026-08-23T05:28:31.875057
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/src/atan_camera.cpp
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/src/atan_camera.cpp
+SHA-256: ec4425bfacd367574ae8a88e22ddb344df5748d248addb857b91d2be0e37c8cb
+Copy Timestamp: 2026-08-23T05:28:31.875385
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/src/user_input_thread.cpp
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/src/user_input_thread.cpp
+SHA-256: af8f69e58915eaa95362f2e6f01d990426b54c52dec66354f812f2f194c761a5
+Copy Timestamp: 2026-08-23T05:28:31.875723
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/src/homography.cpp
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/src/homography.cpp
+SHA-256: c4b35bd83e2dcf004fb060c0fd919fbee0bc0f2307cf39115bd2f1563f112975
+Copy Timestamp: 2026-08-23T05:28:31.876118
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/src/performance_monitor.cpp
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/src/performance_monitor.cpp
+SHA-256: 9c92a84e58b110b3d0c8a22e15f22ca779a35500297abad7e3c0e4d063a6485b
+Copy Timestamp: 2026-08-23T05:28:31.876424
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_common/src/img_align.cpp
+Destination Path: scanarMini/src/rpg_vikit/vikit_common/src/img_align.cpp
+SHA-256: 55b6ea6bc34d46f1e2b5482ccc952b10cd655ba9cc5809225271b57aed677d58
+Copy Timestamp: 2026-08-23T05:28:31.876929
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_py/CMakeLists.txt
+Destination Path: scanarMini/src/rpg_vikit/vikit_py/CMakeLists.txt
+SHA-256: a2563578ee1d65e7ec60268ff3fe2d4b3c4b1486320290cc88bbf5b2d1e67c84
+Copy Timestamp: 2026-08-23T05:28:31.877421
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_py/package.xml
+Destination Path: scanarMini/src/rpg_vikit/vikit_py/package.xml
+SHA-256: d38eff05f6520c320f6e6fc6cf35667c3d786f4e55258b8e9b0b5514054d1af7
+Copy Timestamp: 2026-08-23T05:28:31.877783
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_py/setup.py
+Destination Path: scanarMini/src/rpg_vikit/vikit_py/setup.py
+SHA-256: acfb0b04557526acfe82576eee88fa3bf53dba2b62c8f45d98883ef6dcd71c4e
+Copy Timestamp: 2026-08-23T05:28:31.878088
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_py/src/vikit_py/math_utils.py
+Destination Path: scanarMini/src/rpg_vikit/vikit_py/src/vikit_py/math_utils.py
+SHA-256: 1bc96b7744b4516e3a57c5d9825d99fa98743524198b4073a785a277b6917722
+Copy Timestamp: 2026-08-23T05:28:31.878693
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_py/src/vikit_py/ros_node.py
+Destination Path: scanarMini/src/rpg_vikit/vikit_py/src/vikit_py/ros_node.py
+SHA-256: b66a7ee53574c160eef26bfa72028f229129ff4ceb62e10d9077286b41efbe10
+Copy Timestamp: 2026-08-23T05:28:31.879004
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_py/src/vikit_py/cpu_info.py
+Destination Path: scanarMini/src/rpg_vikit/vikit_py/src/vikit_py/cpu_info.py
+SHA-256: ebf818964622f6928932f0f94af49d7bbff3dcd3414e30999663d8fc1a3ffb81
+Copy Timestamp: 2026-08-23T05:28:31.879314
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_py/src/vikit_py/transformations.py
+Destination Path: scanarMini/src/rpg_vikit/vikit_py/src/vikit_py/transformations.py
+SHA-256: b0e87a908923eb08beda37cab5889f4ba20f38d339d818422b66f585acef0df3
+Copy Timestamp: 2026-08-23T05:28:31.879984
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_py/src/vikit_py/depthmap_utils.py
+Destination Path: scanarMini/src/rpg_vikit/vikit_py/src/vikit_py/depthmap_utils.py
+SHA-256: 5d274c15d71d3718b44ff0529438d3813e3c57500e7069ba4c09da2f775eb6a0
+Copy Timestamp: 2026-08-23T05:28:31.880296
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_py/src/vikit_py/align_trajectory.py
+Destination Path: scanarMini/src/rpg_vikit/vikit_py/src/vikit_py/align_trajectory.py
+SHA-256: 752501ed13eb9b318f698b36d150f625b368dfa8b3b58205cd1a68dca1cd7934
+Copy Timestamp: 2026-08-23T05:28:31.880661
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_py/src/vikit_py/__init__.py
+Destination Path: scanarMini/src/rpg_vikit/vikit_py/src/vikit_py/__init__.py
+SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+Copy Timestamp: 2026-08-23T05:28:31.880871
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_ros/CMakeLists.txt
+Destination Path: scanarMini/src/rpg_vikit/vikit_ros/CMakeLists.txt
+SHA-256: df4f3c2e200b67a769c6ded97dc9043d2fdb1e311e2816ce1407d975a68e0047
+Copy Timestamp: 2026-08-23T05:28:31.881331
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_ros/package.xml
+Destination Path: scanarMini/src/rpg_vikit/vikit_ros/package.xml
+SHA-256: eaf90aa6c1f69082a5d06d5fa0fcce8860f5c50da2502671180f3f3e317822dd
+Copy Timestamp: 2026-08-23T05:28:31.881647
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_ros/include/vikit/camera_loader.h
+Destination Path: scanarMini/src/rpg_vikit/vikit_ros/include/vikit/camera_loader.h
+SHA-256: 25be2cc54e4bcb6e9e0ed422e0410ccc0c195ebeb1e887deee925c7690fe20e8
+Copy Timestamp: 2026-08-23T05:28:31.882219
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_ros/include/vikit/params_helper.h
+Destination Path: scanarMini/src/rpg_vikit/vikit_ros/include/vikit/params_helper.h
+SHA-256: 0a3165e83e8cbfa83f725ed391ebaa914cd5ca580d09c294a5e659a7ee68682a
+Copy Timestamp: 2026-08-23T05:28:31.882636
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_ros/include/vikit/output_helper.h
+Destination Path: scanarMini/src/rpg_vikit/vikit_ros/include/vikit/output_helper.h
+SHA-256: ea2d922ccf6d93dcf641bf26939aac020f389bc833f77929d63cad09e15afc7c
+Copy Timestamp: 2026-08-23T05:28:31.882950
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_ros/src/output_helper.cpp
+Destination Path: scanarMini/src/rpg_vikit/vikit_ros/src/output_helper.cpp
+SHA-256: aea5d3b31d6f3540a569a42844ab5cb2a8d67b1220dea54d365ec8c498f032cd
+Copy Timestamp: 2026-08-23T05:28:31.883495
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/src/rpg_vikit/vikit_ros/src/camera_loader.cpp
+Destination Path: scanarMini/src/rpg_vikit/vikit_ros/src/camera_loader.cpp
+SHA-256: fe7491830c1be0046fc5ff29e9f71f7fe98918a0038910cccbede9a31ce77d46
+Copy Timestamp: 2026-08-23T05:28:31.883930
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Vikit packages supporting camera utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/config/airy_ig2_cad_initial.yaml
+Destination Path: scanarMini/config/airy_ig2_cad_initial.yaml
+SHA-256: 6f8252a6a4eb422d36943e485a28e04dac89b3678af25dcab8b0b1ca33b327b0
+Copy Timestamp: 2026-08-23T05:28:31.884628
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Original sensor and extrinsic layout configurations
+--------------------------------------------------------------------------------
+Source Path: scanR/config/gemini_336l_ig2_extrinsics.yaml
+Destination Path: scanarMini/config/gemini_336l_ig2_extrinsics.yaml
+SHA-256: ccac549fbfd18605441f9162507823aa3a8cf3416ea096267e54594aabba7c02
+Copy Timestamp: 2026-08-23T05:28:31.885083
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Original sensor and extrinsic layout configurations
+--------------------------------------------------------------------------------
+Source Path: scanR/config/sensor_layout.md
+Destination Path: scanarMini/config/sensor_layout.md
+SHA-256: b6cd7eeb0bfd4e1359328f1922f47460df72c647b0265b08aeda4b3364a5e43c
+Copy Timestamp: 2026-08-23T05:28:31.885778
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Original sensor and extrinsic layout configurations
+--------------------------------------------------------------------------------
+Source Path: scanR/config/gemini_336l_kalibr.yaml
+Destination Path: scanarMini/config/gemini_336l_kalibr.yaml
+SHA-256: a6bf1eb8cd58d6b1eec30d80f7717987eb957a5d7030e893301bb2d21be5b5b9
+Copy Timestamp: 2026-08-23T05:28:31.886048
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Original sensor and extrinsic layout configurations
+--------------------------------------------------------------------------------
+Source Path: scanR/config/temporal_sync.yaml
+Destination Path: scanarMini/config/temporal_sync.yaml
+SHA-256: b252d3b85a61c9ccad4e1b5ee761a2e887a3e972ee7ace96289aa1d29c0f939f
+Copy Timestamp: 2026-08-23T05:28:31.886459
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Original sensor and extrinsic layout configurations
+--------------------------------------------------------------------------------
+Source Path: scanR/config/cad_initial_extrinsics.yaml
+Destination Path: scanarMini/config/cad_initial_extrinsics.yaml
+SHA-256: 217f577df9872a8b2f5ee165d06209a461477e8cb27e9f7e8fe64854e2274ca0
+Copy Timestamp: 2026-08-23T05:28:31.886946
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Original sensor and extrinsic layout configurations
+--------------------------------------------------------------------------------
+Source Path: scanR/config/ig2_imu_kalibr.yaml
+Destination Path: scanarMini/config/ig2_imu_kalibr.yaml
+SHA-256: 05bb5a5d72fbc6551eaebbacce1eb55fd51d8693b14a1748b4a23226d7add2d6
+Copy Timestamp: 2026-08-23T05:28:31.887448
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Original sensor and extrinsic layout configurations
+--------------------------------------------------------------------------------
+Source Path: scanR/config/calibrated_extrinsics.json
+Destination Path: scanarMini/config/calibrated_extrinsics.json
+SHA-256: 60736b9d5a76667e02403c0301f6d13caef6d52f7fee88d1a60c91a6daf65598
+Copy Timestamp: 2026-08-23T05:28:31.887760
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Original sensor and extrinsic layout configurations
+--------------------------------------------------------------------------------
+Source Path: scanR/config/airy_ig2_calibrated.yaml
+Destination Path: scanarMini/config/airy_ig2_calibrated.yaml
+SHA-256: 01f81a8aae1327157956855f72fe667ad5a75baf5a60597149284511618d0da6
+Copy Timestamp: 2026-08-23T05:28:31.888278
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Original sensor and extrinsic layout configurations
+--------------------------------------------------------------------------------
+Source Path: scanR/docs/milestone_definition_of_done.md
+Destination Path: scanarMini/docs/milestone_definition_of_done.md
+SHA-256: 2796837df9cd7b1a1d99db218822c09abc856122f9560889d988059d9c99863c
+Copy Timestamp: 2026-08-23T05:28:31.889045
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Existing project documentation
+--------------------------------------------------------------------------------
+Source Path: scanR/docs/golden_datasets.md
+Destination Path: scanarMini/docs/golden_datasets.md
+SHA-256: bb2be6aec45b40f1c23de77c86f924ad9ebc6610ee2eb02e4d1621203401fbb7
+Copy Timestamp: 2026-08-23T05:28:31.889678
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Existing project documentation
+--------------------------------------------------------------------------------
+Source Path: scanR/docs/hardware_sync_orchestration.md
+Destination Path: scanarMini/docs/hardware_sync_orchestration.md
+SHA-256: 0fd164f59b67967f8add2bc06f231c4d18601c962e85e8ad8897cd3bfc21fe37
+Copy Timestamp: 2026-08-23T05:28:31.890461
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Existing project documentation
+--------------------------------------------------------------------------------
+Source Path: scanR/docs/architecture_decisions.md
+Destination Path: scanarMini/docs/architecture_decisions.md
+SHA-256: 43792cc45ace4bf041821ace3858b4b33814c3a77ce139a2f08dc468a1794834
+Copy Timestamp: 2026-08-23T05:28:31.891095
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Existing project documentation
+--------------------------------------------------------------------------------
+Source Path: scanR/docs/project_roadmap.md
+Destination Path: scanarMini/docs/project_roadmap.md
+SHA-256: a066b0c43023808083f59b4e925c5e2f30ffd6418a8e90dd2570ef8fd93d08e5
+Copy Timestamp: 2026-08-23T05:28:31.891827
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Existing project documentation
+--------------------------------------------------------------------------------
+Source Path: scanR/docs/performance_benchmarking.md
+Destination Path: scanarMini/docs/performance_benchmarking.md
+SHA-256: ce060f90882cb4a9b63051819b043a803e406bae89e6aa4ac016e85d427ad2f0
+Copy Timestamp: 2026-08-23T05:28:31.892379
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Existing project documentation
+--------------------------------------------------------------------------------
+Source Path: scanR/docs/known_limitations.md
+Destination Path: scanarMini/docs/known_limitations.md
+SHA-256: 047b73e46c1538d825014584d5d63e4ae7542b96d2fbf821b65caeb652dd4694
+Copy Timestamp: 2026-08-23T05:28:31.893942
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Existing project documentation
+--------------------------------------------------------------------------------
+Source Path: scanR/engineering/m7_static_baseline.py
+Destination Path: scanarMini/diagnostics/m7_static_baseline.py
+SHA-256: 90e3a4eaf498a0d7b40d18379bdb0ead8ff4f4bbe3b3a85df6cdd89e88bb31cc
+Copy Timestamp: 2026-08-23T05:28:31.898001
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Engineering tools used as diagnostic utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/engineering/verify_hardware_sync.py
+Destination Path: scanarMini/diagnostics/verify_hardware_sync.py
+SHA-256: a5abba3f1493ceaba11ec3fe18d0c4f4ec017a3913f0d55060db061222eacfcb
+Copy Timestamp: 2026-08-23T05:28:31.898802
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Engineering tools used as diagnostic utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/engineering/analyze_failure_window.py
+Destination Path: scanarMini/diagnostics/analyze_failure_window.py
+SHA-256: 5e746aabb47d699c566dc24c396a4c153900864354f04d5e9f848899e9ed7d31
+Copy Timestamp: 2026-08-23T05:28:31.899397
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Engineering tools used as diagnostic utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/engineering/analyze_rosbag_truth.py
+Destination Path: scanarMini/diagnostics/analyze_rosbag_truth.py
+SHA-256: e3de1cfc80b7c238a3ba20c3e659f123b92aafb077b8f880ac0eb90e3a13571c
+Copy Timestamp: 2026-08-23T05:28:31.899889
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Engineering tools used as diagnostic utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/engineering/test_gui_ingestion.py
+Destination Path: scanarMini/diagnostics/test_gui_ingestion.py
+SHA-256: 282297de30a8ae99a1a959e3101297eaea901a2cbd48e64df950bdb8f1f283d9
+Copy Timestamp: 2026-08-23T05:28:31.900771
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Engineering tools used as diagnostic utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/engineering/classify_lidar_gaps.py
+Destination Path: scanarMini/diagnostics/classify_lidar_gaps.py
+SHA-256: 855db29aa8c59f038a9024f018789699ec2303d7deec4445ab570feb679aae10
+Copy Timestamp: 2026-08-23T05:28:31.901276
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Engineering tools used as diagnostic utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/engineering/audit_upstream_packet_loss.py
+Destination Path: scanarMini/diagnostics/audit_upstream_packet_loss.py
+SHA-256: d4c401a1506ba42a8ff1701099ddc12943830cbad8116acf174dd75e33991c60
+Copy Timestamp: 2026-08-23T05:28:31.901828
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Engineering tools used as diagnostic utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/engineering/m7_rotations.py
+Destination Path: scanarMini/diagnostics/m7_rotations.py
+SHA-256: 5c2bbbcdf2f85c884ac5a9ef29504058b36b3d567093f461b13e85e0b5b4fc92
+Copy Timestamp: 2026-08-23T05:28:31.902295
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Engineering tools used as diagnostic utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/engineering/m7_2_rotation_validator.py
+Destination Path: scanarMini/diagnostics/m7_2_rotation_validator.py
+SHA-256: 6b199b50db709849690998c11f3d243a6477d7f233fe9adb1497fe4a8ae8455d
+Copy Timestamp: 2026-08-23T05:28:31.902797
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Engineering tools used as diagnostic utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/engineering/m7_3_translation_validator.py
+Destination Path: scanarMini/diagnostics/m7_3_translation_validator.py
+SHA-256: dd7a1dc80d6d1c57d8a20ac44cca9cb02beea2602874751739c00131e9c6b1af
+Copy Timestamp: 2026-08-23T05:28:31.903278
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Engineering tools used as diagnostic utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/engineering/run_m7_3_trial.py
+Destination Path: scanarMini/diagnostics/run_m7_3_trial.py
+SHA-256: bd678365e4ff8bc935faa8f6cb134b2b1e8dd23c7811a86a5bc3c76f5e48950e
+Copy Timestamp: 2026-08-23T05:28:31.903815
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Engineering tools used as diagnostic utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/engineering/analyze_session_2336.py
+Destination Path: scanarMini/diagnostics/analyze_session_2336.py
+SHA-256: ed927b320c538009647d15a56456720ad09da53d9465e02b65e0b820ee0e4566
+Copy Timestamp: 2026-08-23T05:28:31.904260
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Engineering tools used as diagnostic utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/engineering/hardware_inventory.md
+Destination Path: scanarMini/diagnostics/hardware_inventory.md
+SHA-256: 40294a09cc92ebe56e130e23e81b3a59a1b4914d0f0f9cf73a166f2237cebe3c
+Copy Timestamp: 2026-08-23T05:28:31.904602
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Engineering tools used as diagnostic utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/engineering/build_baseline.md
+Destination Path: scanarMini/diagnostics/build_baseline.md
+SHA-256: ec77780b57b9341a5165638b420c4fc306ba9f53b5134fa77b8298d3fda92377
+Copy Timestamp: 2026-08-23T05:28:31.904989
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Engineering tools used as diagnostic utilities
+--------------------------------------------------------------------------------
+Source Path: scanR/launch_scanhub.sh
+Destination Path: scanarMini/launch_scanhub.sh
+SHA-256: 391211958b7a5ffec36de5e6194bc51593caff8fb7545e95c39548c8637a1cc1
+Copy Timestamp: 2026-08-23T05:28:31.905815
+Git Revision: dd838fd91c363f5aff68812e3b9504f3cf5dc428
+Reason: Launch helper script for scanhub GUI
+--------------------------------------------------------------------------------

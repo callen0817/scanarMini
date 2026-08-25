@@ -1,0 +1,23 @@
+cmake_minimum_required(VERSION 3.10)
+project(test_pointcloud_equivalence)
+set(CMAKE_CXX_STANDARD 17)
+
+find_package(ament_cmake REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(rclcpp REQUIRED)
+
+add_executable(test_pointcloud_equivalence test_pointcloud_equivalence.cpp)
+ament_target_dependencies(test_pointcloud_equivalence sensor_msgs rclcpp)
+
+add_executable(benchmark_lidar_subscriber benchmark_lidar_subscriber.cpp)
+ament_target_dependencies(benchmark_lidar_subscriber sensor_msgs rclcpp)
+
+add_executable(benchmark_dds_transport benchmark_dds_transport.cpp)
+ament_target_dependencies(benchmark_dds_transport sensor_msgs rclcpp)
+
+add_executable(benchmark_livo_consumer benchmark_livo_consumer.cpp)
+ament_target_dependencies(benchmark_livo_consumer sensor_msgs rclcpp)
+
+add_executable(benchmark_m9_sync benchmark_m9_sync.cpp)
+ament_target_dependencies(benchmark_m9_sync sensor_msgs rclcpp)
+

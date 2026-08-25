@@ -1,0 +1,103 @@
+/**:
+  ros__parameters:
+    common:
+      img_topic: /alphasense/cam0/image_raw
+      lid_topic: /hesai/pandar
+      imu_topic: /alphasense/imu
+      img_en: 1
+      lidar_en: 1
+      ros_driver_bug_fix: false
+      lidar_type: 5
+      scan_line: 32
+    extrin_calib:
+      extrinsic_T:
+      - -0.006730146149038548
+      - -0.006897049862999071
+      - 0.049898628062256645
+      extrinsic_R:
+      - 0.006609639848469365
+      - -0.9999773650294649
+      - 0.0012578115132016717
+      - -0.9999762249571927
+      - -0.006612093869054189
+      - -0.0019569708811106104
+      - 0.001965243352927244
+      - -0.0012448467359610184
+      - -0.9999972940839232
+      Rcl:
+      - -0.9998978
+      - -0.0114493
+      - 0.00844
+      - -0.0083989
+      - -0.0028704
+      - -0.9999582
+      - 0.0114718
+      - -0.9999291
+      - 0.003486
+      Pcl:
+      - -0.054101
+      - 0.063829
+      - -0.054451
+    time_offset:
+      imu_time_offset: 0.0
+      img_time_offset: 0.001985775109730793
+      exposure_time_init: 0.0
+    preprocess:
+      point_filter_num: 2
+      filter_size_surf: 0.2
+      lidar_type: 5
+      scan_line: 32
+      blind: 0.5
+    vio:
+      max_iterations: 5
+      outlier_threshold: 150
+      img_point_cov: 300
+      patch_size: 8
+      patch_pyrimid_level: 4
+      normal_en: true
+      raycast_en: false
+      inverse_composition_en: false
+      exposure_estimate_en: true
+      inv_expo_cov: 0.1
+    imu:
+      imu_en: true
+      imu_int_frame: 30
+      acc_cov: 0.0001688956233495657
+      gyr_cov: 0.0010679343003532472
+      b_acc_cov: 9.782812831313576e-07
+      b_gyr_cov: 2.6541629581345176e-05
+    lio:
+      max_iterations: 8
+      dept_err: 0.02
+      beam_err: 0.05
+      min_eigen_value: 0.005
+      voxel_size: 0.4
+      max_layer: 2
+      max_points_num: 20
+      layer_init_num:
+      - 5
+      - 5
+      - 5
+      - 5
+      - 5
+    local_map:
+      map_sliding_en: true
+      half_map_size: 50
+      sliding_thresh: 8.0
+    uav:
+      imu_rate_odom: false
+      gravity_align_en: true
+    publish:
+      dense_map_en: true
+      pub_effect_point_en: false
+      pub_plane_en: false
+      pub_scan_num: 5
+      blind_rgb_points: 0.0
+    evo:
+      seq_name: hesai_pandarxt32
+      pose_output_en: false
+    pcd_save:
+      pcd_save_en: true
+      colmap_output_en: false
+      filter_size_pcd: 0.05
+      interval: -1

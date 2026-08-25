@@ -1,0 +1,60 @@
+# scanarMini Calibration Provenance - Bag D Experimental Results
+# Captured: 2026-08-23
+# Setup: Gemini 336L Stereo IR (Auto-exposure enabled, max_exposure 12ms, Laser OFF) 
+#        and RoboSense Airy internal IMU (200Hz).
+# Motion: Continuous ScanAR Cam 6-DOF
+
+metadata:
+  date: "2026-08-23"
+  dataset_source: "bags/kalibr_gemini336l_airyimu_bagD.bag"
+  laser_projector: "OFF"
+  shutter_limit_ms: 12.0
+  camera_frame_rate_fps:
+    cam0: 28.8
+    cam1: 29.0
+  corner_extraction_error_px: "0.176 - 0.184"
+  reprojection_error_px:
+    cam0_mean: 0.804
+    cam0_median: 0.764
+    cam1_mean: 0.556
+    cam1_median: 0.508
+  gyro_error_rad_s: 0.0095
+  accel_error_m_s2: 0.0698
+  timeshift_s: 0.0000
+  hardware_bindings:
+    airy_serial: "030000003009"
+    gemini_serial: "CPC6463000XW"
+
+# Measured calibration results from Bag D
+calibration_results:
+  # Cam0 Optical Frame <- RoboSense Airy Native IMU
+  # p_cam0 = T_cam0_airy_imu * p_imu
+  T_cam0_airy_imu:
+    matrix:
+      - [ 0.999950,  0.005176,  0.008563,  0.044935]
+      - [-0.008560, -0.000425,  0.999963,  0.013359]
+      - [ 0.005180, -0.999987, -0.000381, -0.047595]
+      - [ 0.000000,  0.000000,  0.000000,  1.000000]
+    translation_m: [0.044935, 0.013359, -0.047595]
+    translation_mm: [44.935, 13.359, -47.595]
+    rotation_status: "validated"
+    translation_status: "experimentally_validated"
+
+# Independent physical/mechanical reference from CAD & Factory calibration
+mechanical_factory_reference:
+  # Nominal CAD based on enclosure geometry and RoboSense factory IMU position
+  # p_cam0 = T_cam0_airy_imu_cad * p_imu
+  T_cam0_airy_imu_cad:
+    matrix:
+      - [ 0.999950,  0.005176,  0.008563,  0.043460]
+      - [-0.008560, -0.000425,  0.999963,  0.018771]
+      - [ 0.005180, -0.999987, -0.000381, -0.051450]
+      - [ 0.000000,  0.000000,  0.000000,  1.000000]
+    translation_m: [0.043460, 0.018771, -0.051450]
+    translation_mm: [43.460, 18.771, -51.450]
+    source: "enclosure_geometry_plus_airy_factory_imu"
+
+comparison:
+  vector_difference_mm: 6.807
+  vector_angle_deg: 5.08
+  lever_arm_norm_difference_mm: 3.111

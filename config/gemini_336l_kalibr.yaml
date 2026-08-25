@@ -1,0 +1,23 @@
+# scanR Gemini 336L Stereo IR Camera - Kalibr Calibration Report & Parameters
+# Source Dataset: bags/kalibr_gemini336l_ig2_3min.bag
+# Date: August 2026
+
+camera_model: pinhole
+distortion_model: radtan
+
+stereo_parameters:
+  baseline_m: 0.0952800            # Measured: 95.2800 mm (Factory EEPROM: 95.2793 mm, Delta: +0.0007 mm)
+  baseline_status: "VERIFIED"
+
+transforms:
+  # Left IR Camera -> Right IR Camera (T_cam1_cam0)
+  # p_cam1 = T_cam1_cam0 * p_cam0
+  T_cam1_cam0:
+    - [ 1.00000000,  0.00000000,  0.00000000, -0.09528]
+    - [ 0.00000000,  1.00000000,  0.00000000,  0.00000]
+    - [ 0.00000000,  0.00000000,  1.00000000,  0.00000]
+    - [ 0.00000000,  0.00000000,  0.00000000,  1.00000]
+
+validation_metrics:
+  rotation_determinant: 1.00000000
+  orthogonality_error: 3.53e-15

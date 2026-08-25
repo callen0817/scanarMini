@@ -1,0 +1,33 @@
+# scanarMini Camera Calibration Profile (Kalibr Mode)
+# Proven with Bag D AprilGrid acquisition parameters
+
+camera_name: camera
+profile_name: kalibr
+usb_speed_mbps: 5000
+serial: CPC6463000XW
+
+# Laser / IR Projector: OFF (Required for clean AprilGrid feature extraction without laser speckle)
+enable_laser: false
+
+# Exposure settings: Auto-exposure enabled with bounded max exposure
+enable_ir_auto_exposure: true
+ir_exposure_max_us: 12000
+
+# Stream resolutions and frame rates (Proven for Kalibr calibration)
+stereo_ir:
+  width: 640
+  height: 400
+  fps: 30
+  format: Y8 / GREY
+
+rgb:
+  width: 640
+  height: 400
+  fps: 30
+  format: RGB888
+
+depth:
+  width: 640
+  height: 400
+  fps: 30
+  format: 16UC1

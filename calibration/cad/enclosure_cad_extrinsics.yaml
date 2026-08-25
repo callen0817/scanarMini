@@ -1,0 +1,39 @@
+# scanarMini Mechanical Enclosure CAD Geometry Reference
+# Documenting all physical setbacks, radii, offsets, and the derived transforms.
+
+enclosure_measurements:
+  gemini_front_glass_to_airy_cylindrical_surface_in: 1.2
+  gemini_front_glass_to_airy_cylindrical_surface_mm: 30.480
+  gemini_336l_optical_setback_mm: 4.780
+  airy_diameter_mm: 60.0
+  airy_radius_mm: 30.000
+
+derived_separation:
+  # Longitudinal separation from Gemini housing-center optical datum to Airy LiDAR origin
+  # 30.480 + 30.000 - 4.780 = 55.700 mm
+  housing_center_to_lidar_origin_x_mm: -55.700
+  housing_center_to_lidar_origin_y_mm: 0.000
+  housing_center_to_lidar_origin_z_mm: -14.311
+
+# Correct Cam0 (Left IR) Mechanical Transform
+# Translation: [+47.640, +14.311, -55.700] mm
+T_cam0_airy_lidar:
+  matrix:
+    - [ 0.0, -1.0,  0.0,  0.047640 ]
+    - [ 0.0,  0.0, -1.0,  0.014311 ]
+    - [ 1.0,  0.0,  0.0, -0.055700 ]
+    - [ 0.0,  0.0,  0.0,  1.000000 ]
+  translation_m: [0.047640, 0.014311, -0.055700]
+
+# Composed CAD reference from Left IR (Cam0) to Airy IMU Frame
+# Composed using: T_cam0_airy_imu,CAD = T_cam0_airy_lidar * T_airy_lidar_airy_imu
+# Translation: [+43.460, +18.771, -51.450] mm
+T_cam0_airy_imu_cad:
+  matrix:
+    - [ 0.999950,  0.005176,  0.008563,  0.043460 ]
+    - [-0.008560, -0.000425,  0.999963,  0.018771 ]
+    - [ 0.005180, -0.999987, -0.000381, -0.051450 ]
+    - [ 0.000000,  0.000000,  0.000000,  1.000000 ]
+  translation_m: [0.043460, 0.018771, -0.051450]
+  translation_mm: [43.460, 18.771, -51.450]
+  norm_mm: 69.916

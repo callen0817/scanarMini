@@ -1,0 +1,30 @@
+# ROS 2 Build & Install Directories
+build/
+install/
+log/
+**/build/
+**/install/
+**/log/
+**/Log/
+
+# Python Cache & Virtual Environments
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Test binary build artifacts
+scripts/build/
+scripts/probe_gemini_sync_modes
+
+# Core dumps and temporary logs
+*.log
+core*
+*.swp
+*~
+.DS_Store
+
+# Exclude large data bagfiles / raw dumps
+data/*.bag
+data/*.db3
+data/*.pcd

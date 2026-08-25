@@ -1,0 +1,36 @@
+# scanR Hardware Temporal Synchronization Configuration & Provenance Record
+# Master Reference: InertialSense IG-2 Hardware Clock
+
+hardware_sync_wiring:
+  gemini_336l:
+    strobe_signal: "Gemini 336L Pin 3 (VSYNC_OUT) -> IG-2 Pin H1-6 (STROBE INPUT)"
+    ground: "Gemini 336L Pin 8 (GND) -> IG-2 Pin H1-1 (GND)"
+    unused_pins:
+      - "Pin 4 (NOT CONNECTED / UNUSED)"
+      - "Pin 6 (NOT CONNECTED / UNUSED)"
+      - "Pin 7 (NOT CONNECTED / UNUSED)"
+  
+  robosense_airy:
+    gprmc_nmea: "IG-2 Pin H1-7 (Tx0) -> MAX3232 -> Airy Pin 1 (GPS_GPRMC)"
+    pps_pulse: "IG-2 Pin H1-14 (GPS.TIMEPULSE) -> Airy Pin 3 (GPS_PPS)"
+    power_and_gnd:
+      - "IG-2 Pin H1-3 (3.3V) -> MAX3232 VCC"
+      - "IG-2 Pin H1-1 (GND) -> MAX3232 GND & Airy Pin 4 (GND)"
+
+empirical_timing_benchmarks:
+  # Measured on Jetson Orin NX under production ROS pipeline
+  test_30_second:
+    matched_frames: "939 / 939 (100.0% matched pairs)"
+    mean_offset_ms: 1.465
+    jitter_ms: 0.361
+    status: "PASS"
+  
+  test_5_minute:
+    matched_frames: "8973 / 8994 matched frames"
+    mean_offset_ms: 1.290
+    jitter_ms: 0.319
+    status: "PASS"
+
+calibration_dataset_baseline:
+  kalibr_temporal_offset_s: 0.000000   # Hardware lock verified in calibration bag
+  notes: "Kalibr calibration bag was recorded with 0.0 ms temporal offset; production ROS timestamps reflect the ~1.3 ms pipeline latency."

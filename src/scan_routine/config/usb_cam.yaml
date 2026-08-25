@@ -1,0 +1,23 @@
+# usb_cam.yaml - ScanAR Global Shutter Configuration
+/**:
+  ros__parameters:
+    video_device: "/dev/v4l/by-id/usb-Global_Shutter_Camera_Global_Shutter_Camera_01.00.00-video-index0"
+    camera_name: "default_cam"
+    camera_info_url: ""
+    image_width: 640
+    image_height: 480
+    pixel_format: "mjpeg2rgb"
+    framerate: 15.0
+    io_method: "mmap"
+    frame_id: "camera_link"
+    brightness: -1
+    contrast: -1
+    saturation: -1
+    sharpness: -1
+    gain: -1
+    auto_white_balance: true
+    white_balance: 4000
+    autoexposure: true
+    exposure: 100
+    autofocus: false
+    focus: -1

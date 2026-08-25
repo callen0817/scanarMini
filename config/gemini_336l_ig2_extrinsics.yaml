@@ -1,0 +1,51 @@
+# scanR Gemini 336L <-> InertialSense IG-2 Spatial Extrinsics (Kalibr Solved)
+# Base IMU Frame: ig2_link (imu0)
+# Left Camera: cam0 (gemini_left_ir_frame / gemini_depth_optical_frame)
+# Right Camera: cam1 (gemini_right_ir_frame)
+# Source Dataset: bags/kalibr_gemini336l_ig2_3min.bag
+
+calibration_provenance:
+  method: "Kalibr Spatio-Temporal Calibration"
+  status: "AUTHORITATIVE_MEASURED"
+  dataset: "bags/kalibr_gemini336l_ig2_3min.bag"
+
+# Forward Mapping: p_cam = T_cam_imu * p_imu
+forward_transforms:
+  T_cam0_imu0:
+    translation_m: [-0.05527, 0.02528, 0.00285]     # [-55.27, +25.28, +2.85] mm
+    matrix_4x4:
+      - [-0.28115462, -0.71328172, -0.64201345, -0.05527]
+      - [-0.92797026,  0.37257770, -0.00755394,  0.02528]
+      - [ 0.24458798,  0.59364556, -0.76665616,  0.00285]
+      - [ 0.00000000,  0.00000000,  0.00000000,  1.00000]
+
+  T_cam1_imu0:
+    translation_m: [-0.15055, 0.02528, 0.00285]     # [-150.55, +25.28, +2.85] mm
+    matrix_4x4:
+      - [-0.28115462, -0.71328172, -0.64201345, -0.15055]
+      - [-0.92797026,  0.37257770, -0.00755394,  0.02528]
+      - [ 0.24458798,  0.59364556, -0.76665616,  0.00285]
+      - [ 0.00000000,  0.00000000,  0.00000000,  1.00000]
+
+# Inverse Mapping for ROS tf2_ros static_transform_publisher: p_imu = T_imu_cam * p_cam
+inverse_transforms:
+  T_imu0_cam0:
+    translation_m: [0.00722260, -0.05053373, -0.03310815]
+    matrix_4x4:
+      - [-0.28115462, -0.92797026,  0.24458798,  0.00722260]
+      - [-0.71328172,  0.37257770,  0.59364556, -0.05053373]
+      - [-0.64201345, -0.00755394, -0.76665616, -0.03310815]
+      - [ 0.00000000,  0.00000000,  0.00000000,  1.00000000]
+
+  T_imu0_cam1:
+    translation_m: [-0.01956582, -0.11849522, -0.09427919]
+    matrix_4x4:
+      - [-0.28115462, -0.92797026,  0.24458798, -0.01956582]
+      - [-0.71328172,  0.37257770,  0.59364556, -0.11849522]
+      - [-0.64201345, -0.00755394, -0.76665616, -0.09427919]
+      - [ 0.00000000,  0.00000000,  0.00000000,  1.00000000]
+
+mechanical_cad_reference:
+  note: "Preserved as physical mounting reference & initial guess"
+  translation_m: [0.000000, 0.024018, -0.032258]
+  rpy_deg: [0.0, 0.0, 0.0]

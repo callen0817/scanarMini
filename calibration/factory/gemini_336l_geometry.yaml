@@ -1,0 +1,25 @@
+# Orbbec Gemini 336L Stereo IR & RGB Geometry Registry
+# Hardware S/N: CPC6463000XW
+# Firmware: 1.4.60
+
+metadata:
+  device: "Orbbec Gemini 336L"
+  serial_number: "CPC6463000XW"
+  firmware_version: "1.4.60"
+  baseline_ref_mm: 95.2793
+
+internal_geometry:
+  # Camera Left IR is Cam0, Camera Right IR is Cam1
+  stereo_baseline_m: 0.0952793
+  cam0_left_ir_y_offset_from_center_m: 0.04763965
+  cam1_right_ir_y_offset_from_center_m: -0.04763965
+  camera_center_height_above_mounting_plane_m: 0.014311
+
+rgb_relative_to_left_ir:
+  translation_m: [0.0237306, -0.0000932, -0.0004246]
+  quaternion_xyzw: [-0.000658, -0.000174, -0.001189, 0.999999]
+  matrix:
+    - [ 0.999997,  0.002377, -0.000347,  0.0237306]
+    - [-0.002377,  0.999996,  0.001316, -0.0000932]
+    - [ 0.000344, -0.001317,  0.999999, -0.0004246]
+    - [ 0.000000,  0.000000,  0.000000,  1.0000000]

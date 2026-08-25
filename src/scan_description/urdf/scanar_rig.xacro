@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="scanar_rig">
+
+  <xacro:property name="config" value="${xacro.load_yaml('$(find scan_description)/config/scanar_rig.yaml')}"/>
+
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://scan_description/mesh/scanAR_v4.stl" scale="1 1 1"/>
+      </geometry>
+      <material name="helmet_color">
+        <color rgba="0.2 0.2 0.2 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <link name="camera_link"/> <joint name="base_to_camera" type="fixed">
+    <parent link="base_link"/>
+    <child link="camera_link"/>
+    <origin xyz="${config['camera']['x']} ${config['camera']['y']} ${config['camera']['z']}" 
+            rpy="${config['camera']['roll']} ${config['camera']['pitch']} ${config['camera']['yaw']}"/>
+  </joint>
+
+  <link name="rslidar"/> 
+  <joint name="base_to_lidar" type="fixed">
+    <parent link="base_link"/>
+    <child link="rslidar"/>
+    <origin xyz="${config['lidar']['x']} ${config['lidar']['y']} ${config['lidar']['z']}" 
+            rpy="${config['lidar']['roll']} ${config['lidar']['pitch']} ${config['lidar']['yaw']}"/>
+  </joint>
+
+  <link name="imu_link"/>
+  <joint name="base_to_imu" type="fixed">
+    <parent link="base_link"/>
+    <child link="imu_link"/>
+    <origin xyz="${config['imu']['x']} ${config['imu']['y']} ${config['imu']['z']}" 
+            rpy="${config['imu']['roll']} ${config['imu']['pitch']} ${config['imu']['yaw']}"/>
+  </joint>
+
+</robot>

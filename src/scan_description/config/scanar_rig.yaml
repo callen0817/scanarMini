@@ -1,0 +1,28 @@
+# scanR Golden Hardware Rig Sensor Offsets (Extrinsics)
+# Reference Origin: IG-2 IMU base (imu_link)
+# All translations are in meters (x y z)
+# All rotations are in radians (roll pitch yaw)
+
+lidar:
+  x: 0.035814       # Front of IG-2 module to center bottom of Airy (1.41 in)
+  y: 0.000000       # Centered
+  z: 0.074422       # Underside of IG-2 to center bottom of Airy (2.93 in)
+  roll: -2.356194   # Empirically validated Roll=-135 deg (-135 * pi / 180)
+  pitch: 0.000000
+  yaw: 0.000000
+
+camera:
+  x: -0.017018      # Front face 336L to front of IG-2 module (0.67 in behind)
+  y: 0.000000       # Centered
+  z: 0.032258       # Underside of IG-2 to center screw holes on back of 336L (1.27 in)
+  roll: -1.570796   # ROS Camera optical frame convention
+  pitch: 0.000000
+  yaw: -1.570796
+
+imu:
+  x: 0.000000       # Reference Base
+  y: 0.000000
+  z: 0.000000
+  roll: 0.000000
+  pitch: 0.000000
+  yaw: 0.000000

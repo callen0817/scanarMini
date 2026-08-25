@@ -1,0 +1,53 @@
+# scanarMini Historical Calibration Registry (Bags A, B, C)
+# Retained for comparison, baseline checks, and development auditing.
+
+bag_a:
+  label: "Bag A: Rotational Calibration"
+  date: "August 2026"
+  filename: "bags/kalibr/kalibr_gemini336l_airyimu_bagA_188s.bag"
+  duration_s: 188.0
+  laser_projector: "ON"
+  shutter_limit: "Unbounded"
+  corner_extraction_error_px: 1.34
+  reprojection_error_px: 1.31
+  gyro_error_rad_s: 0.00824
+  rotation_error_vs_difop_deg: 0.4399
+  translation_mm: [26.838, -4.474, 0.954]
+  lever_arm_norm_mm: 27.22
+  vector_angle_vs_cad_deg: 48.2
+  status: "retained_historical_evidence"
+  conclusions: "Strong rotation result but poor translation observability."
+
+bag_b:
+  label: "Bag B: Phased Lever-Arm Calibration"
+  date: "August 2026"
+  filename: "bags/kalibr/kalibr_gemini336l_airyimu_bagB_seeded.bag"
+  duration_s: 205.2
+  laser_projector: "ON"
+  shutter_limit: "Unbounded"
+  corner_extraction_error_px: 1.25
+  reprojection_error_px: 1.39
+  gyro_error_rad_s: 0.060
+  rotation_error_vs_difop_deg: 1.4200
+  translation_mm: [28.117, 12.350, -45.205]
+  lever_arm_norm_mm: 54.65
+  vector_angle_vs_cad_deg: 35.6
+  status: "retained_historical_evidence"
+  conclusions: "Correct directional quadrant, but still materially short of nominal 69.9mm."
+
+bag_c:
+  label: "Bag C: Segmented No-Projector Calibration"
+  date: "August 2026"
+  filename: "bags/kalibr/kalibr_gemini336l_airyimu_bagC_noprojector.bag"
+  duration_s: 216.7
+  laser_projector: "OFF"
+  shutter_limit: "Unbounded"
+  corner_extraction_error_px: 0.239
+  reprojection_error_px: "Diverged"
+  gyro_error_rad_s: null
+  rotation_error_vs_difop_deg: 3.4300
+  translation_mm: [423.2, 0.0, 0.0]  # Approximate diverged translation
+  lever_arm_norm_mm: 423.2
+  vector_angle_vs_cad_deg: null
+  status: "invalid_diverged"
+  conclusions: "Established that projector OFF yields much cleaner imagery, but motion profile was insufficient causing solver divergence."

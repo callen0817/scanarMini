@@ -1,0 +1,18 @@
+# scanR RoboSense Airy LiDAR <-> IG-2 IMU Initial CAD Transform
+# Status: INITIAL CAD BASELINE (Pending FAST-Calib empirical calibration on x86)
+# Base Frame: ig2_link
+# Child Frame: rslidar
+
+mechanical_cad_extrinsics:
+  translation_m:
+    x: 0.000000        # Centered laterally
+    y: 0.035814        # +35.814 mm forward from IG-2 front face
+    z: -0.074422       # -74.422 mm below IG-2 underside datum
+  rotation_rpy_deg:
+    roll: 0.0
+    pitch: -45.0       # Tilted 45 degrees upward towards sky
+    yaw: 0.0
+
+workflow_notes:
+  - "This CAD transform serves as the initialization for FAST-Calib."
+  - "FAST-Calib processing will be executed on the x86 workstation and the solved extrinsics imported back to replace this initial estimate."

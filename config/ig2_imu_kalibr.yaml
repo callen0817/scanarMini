@@ -1,0 +1,16 @@
+# scanR InertialSense IG-2 IMU - Kalibr Model & Calibration Parameters
+# Source Dataset: bags/kalibr_gemini336l_ig2_3min.bag
+# Date: August 2026
+
+imu_configuration:
+  calibration_topic: "/inertial_sense/imu_raw"   # DID 97
+  calibration_rate_hz: 500.0                     # Calibration dataset capture rate
+  production_topic: "/imu"
+
+noise_and_residuals:
+  gyroscope_residual_rad_s: 0.08045              # Target: < 0.10 rad/s (VERIFIED)
+  accelerometer_residual_m_s2: 0.07745           # Target: < 0.10 m/s^2 (VERIFIED)
+
+notes:
+  - "The 500 Hz rate corresponds to the raw DID 97 stream used during Kalibr dataset collection."
+  - "Production ROS navigation rate is governed by IMX-5 firmware settings and should not be modified merely to match the calibration dataset."

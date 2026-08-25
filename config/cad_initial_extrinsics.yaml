@@ -1,0 +1,42 @@
+# scanR Golden Hardware Rig - Initial CAD Extrinsics (Milestone 3 Working Estimate)
+# Base Frame: IG-2 IMU (ig2_link)
+# Axes: +Y = Forward, +X = Left, +Z = Up
+# Date: 2026-07-29
+
+frames:
+  base_frame: ig2_link
+
+  # IG-2 -> Gemini 336L Depth Optical Center
+  imu_to_gemini_depth:
+    translation:
+      x: 0.000000      # Centered along lateral axis
+      y: 0.024018      # 17.018 mm (front glass) + 7.0 mm (optical setback)
+      z: -0.032258     # 32.258 mm below IG-2 underside datum
+    rotation_rpy:
+      roll: 0.0
+      pitch: 0.0
+      yaw: 0.0
+
+  # Gemini 336L Internal Factory Offsets (Depth -> RGB & Depth -> IMU)
+  gemini_depth_to_rgb:
+    translation:
+      x: 0.023750      # +23.75 mm RGB baseline offset
+      y: 0.000000
+      z: 0.000000
+
+  gemini_depth_to_imu:
+    translation:
+      x: 0.007866      # +7.866 mm internal IMU offset
+      y: 0.001068      # +1.068 mm
+      z: -0.014248     # -14.248 mm
+
+  # IG-2 -> RoboSense Airy LiDAR Base Center
+  imu_to_airy:
+    translation:
+      x: 0.000000      # Centered along lateral axis
+      y: 0.035814      # +35.814 mm forward from IG-2 front
+      z: -0.074422     # -74.422 mm below IG-2 underside
+    rotation_rpy:
+      roll: 0.0
+      pitch: -45.0     # Pure pitch tilt 45 degrees upward towards sky
+      yaw: 0.0

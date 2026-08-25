@@ -1,0 +1,49 @@
+# scanarMini Camera Production Profile (Measured Winner from M8.4 Characterization)
+# Configured for Dedicated USB 3.2 Topology (5000 Mbps) on Jetson Orin
+
+camera_name: camera
+profile_name: production_higher_detail
+usb_speed_mbps: 5000
+serial: CPC6463000XW
+
+# Laser / IR Projector: ON (Required for active stereo depth correlation; yields 93.6% valid depth vs 15.1% passive)
+enable_laser: true
+
+# Exposure settings: Auto-exposure enabled with bounded max exposure
+enable_ir_auto_exposure: true
+ir_exposure_max_us: 12000
+
+# Stream configurations (Measured Winner: Candidate 2)
+stereo_ir:
+  width: 848
+  height: 480
+  fps: 60
+  format: Y8 / GREY
+
+rgb:
+  width: 1280
+  height: 800
+  fps: 30
+  format: RGB888
+
+depth:
+  width: 848
+  height: 480
+  fps: 60
+  format: 16UC1
+
+sync:
+  sync_mode: secondary
+  time_domain: global
+
+measured_metrics:
+  left_ir_delivered_fps: 57.3
+  right_ir_delivered_fps: 58.9
+  stereo_median_dt_ms: 16.7
+  stereo_p95_dt_ms: 16.7
+  depth_delivered_fps: 53.0
+  valid_depth_percent: 93.6
+  rgb_delivered_fps: 25.3
+  rgb_median_dt_ms: 33.3
+  jetson_cpu_load_percent: 31.3
+  usb_transport_drops: 0

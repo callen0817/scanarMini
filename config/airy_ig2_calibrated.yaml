@@ -1,0 +1,36 @@
+# scanR RoboSense Airy LiDAR <-> InertialSense IG-2 Spatial Extrinsics (FAST-Calib Solved & Audited)
+# Base IMU Frame: ig2_link (imu0, ROS ENU: +X=East/Right, +Y=North/Forward, +Z=Up)
+# LiDAR Frame: rslidar (RoboSense Airy native base-center: +X=Forward, +Y=Left, +Z=Up)
+# Calibration Provenance: FAST-Calib targetless multi-scene optimization + Frame-Convention Audit
+
+calibration_provenance:
+  method: "FAST-Calib Spatio-Temporal Calibration"
+  status: "AUTHORITATIVE_AUDITED_LOCKED"
+  base_frame: "ig2_link"
+  child_frame: "rslidar"
+
+# FAST-LIVO2 Configuration Format (p_imu = extrinsic_R * p_lidar + extrinsic_T)
+extrinsic_R: [-0.03050185, -0.68371471,  0.72911167,
+               0.99875044,  0.00804298,  0.04932419,
+              -0.03958790,  0.72970508,  0.68261504]
+
+extrinsic_T: [-0.244118, -0.016064, 0.245459]
+
+# Full 4x4 SE(3) Homogeneous Transformation Matrix: T_imu0_airy
+# Maps coordinates: P_imu = T_imu0_airy * P_airy
+transforms:
+  T_imu0_airy:
+    matrix_4x4:
+      - [-0.03050185, -0.68371471,  0.72911167, -0.244118]
+      - [ 0.99875044,  0.00804298,  0.04932419, -0.016064]
+      - [-0.03958790,  0.72970508,  0.68261504,  0.245459]
+      - [ 0.00000000,  0.00000000,  0.00000000,  1.000000]
+
+# Physical Reconciliation Summary:
+# - Euler Interpretation Artifact: Nominal +90° coordinate swap (IMU +X=Right vs LiDAR +X=Forward) combined
+#   with physical ~45° pitch tilt maps to ~46.9° roll and ~91.8° yaw in Euler representation.
+# - Net angular deviation from ideal mechanical CAD mounting: only 3.42°.
+# - Translation vector in IG-2 ROS frame:
+#     X = -0.244 m -> Airy base is left of IG-2 origin (IG-2 is right of Airy)
+#     Y = -0.016 m -> Airy base is behind IG-2 origin (IG-2 is slightly forward)
+#     Z = +0.245 m -> Airy base is above IG-2 origin (IG-2 is below Airy)

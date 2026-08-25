@@ -1,0 +1,85 @@
+# scanarMini Production Extrinsics Configuration File
+# This file is loaded by the scanner runtime at startup.
+# It defines the active transformation matrices between all sensors.
+
+metadata:
+  active_profile: "bag_d"  # Choices: [bag_d, cad_factory]
+  airy_serial: "030000003009"
+  gemini_serial: "CPC6463000XW"
+  updated_timestamp: "2026-08-23T05:31:00"
+
+# Active transforms based on Bag D experimental results
+active_transforms:
+  # Left IR Cam0 Optical Frame <- RoboSense Airy Native IMU
+  # p_cam0 = T_cam0_airy_imu * p_imu
+  T_cam0_airy_imu:
+    matrix:
+      - [ 0.999950,  0.005176,  0.008563,  0.044935]
+      - [-0.008560, -0.000425,  0.999963,  0.013359]
+      - [ 0.005180, -0.999987, -0.000381, -0.047595]
+      - [ 0.000000,  0.000000,  0.000000,  1.000000]
+    translation_m: [0.044935, 0.013359, -0.047595]
+    translation_status: "experimentally_validated_bag_d"
+
+  # Right IR Cam1 Optical Frame <- RoboSense Airy Native IMU
+  # p_cam1 = T_cam1_airy_imu * p_imu
+  # Computed using stereo baseline: T_cam1_airy_imu = T_cam1_cam0 * T_cam0_airy_imu
+  T_cam1_airy_imu:
+    matrix:
+      - [ 0.999950,  0.005176,  0.008563, -0.050344]
+      - [-0.008560, -0.000425,  0.999963,  0.013359]
+      - [ 0.005180, -0.999987, -0.000381, -0.047595]
+      - [ 0.000000,  0.000000,  0.000000,  1.000000]
+    translation_m: [-0.050344, 0.013359, -0.047595]
+
+  # Left IR Camera -> Right IR Camera (T_cam1_cam0)
+  # p_cam1 = T_cam1_cam0 * p_cam0
+  T_cam1_cam0:
+    matrix:
+      - [ 1.000000,  0.000000,  0.000000, -0.095279]
+      - [ 0.000000,  1.000000,  0.000000,  0.000000]
+      - [ 0.000000,  0.000000,  1.000000,  0.000000]
+      - [ 0.000000,  0.000000,  0.000000,  1.000000]
+    translation_m: [-0.095279, 0.0, 0.0]
+
+  # Cam0 Left IR Frame <- RoboSense Airy LiDAR Base Center
+  # p_cam0 = T_cam0_airy_lidar * p_lidar
+  # Composed from T_cam0_airy_imu and Airy factory factory T_airy_lidar_airy_imu inverse
+  # p_cam0 = T_cam0_airy_imu * T_airy_imu_airy_lidar * p_lidar
+  T_cam0_airy_lidar:
+    matrix:
+      - [ 0.000000, -1.000000,  0.000000,  0.047640]
+      - [ 0.000000,  0.000000, -1.000000,  0.014311]
+      - [ 1.000000,  0.000000,  0.000000, -0.055700]
+      - [ 0.000000,  0.000000,  0.000000,  1.000000]
+    translation_m: [0.047640, 0.014311, -0.055700]
+
+  # RGB Color Optical Frame <- RoboSense Airy LiDAR Base Center
+  # p_rgb = T_rgb_airy_lidar * p_lidar
+  T_rgb_airy_lidar:
+    matrix:
+      - [ 0.000350, -0.999997,  0.002377,  0.023855]
+      - [-0.001316, -0.002378, -0.999996,  0.014534]
+      - [ 0.999999,  0.000347, -0.001317, -0.055265]
+      - [ 0.000000,  0.000000,  0.000000,  1.000000]
+    translation_m: [0.023855, 0.014534, -0.055265]
+
+  # RGB Color Optical Frame <- RoboSense Airy IMU Frame
+  # p_rgb = T_rgb_airy_imu * p_imu
+  T_rgb_airy_imu:
+    matrix:
+      - [ 0.999997,  0.002377, -0.000347,  0.019666]
+      - [-0.002377,  0.999996,  0.001316,  0.018978]
+      - [ 0.000344, -0.001317,  0.999999, -0.051007]
+      - [ 0.000000,  0.000000,  0.000000,  1.000000]
+    translation_m: [0.019666, 0.018978, -0.051007]
+
+# Alternative transform references (read-only, for comparison or fallback verification)
+alternative_references:
+  T_cam0_airy_imu_cad:
+    matrix:
+      - [ 0.999950,  0.005176,  0.008563,  0.043460]
+      - [-0.008560, -0.000425,  0.999963,  0.018771]
+      - [ 0.005180, -0.999987, -0.000381, -0.051450]
+      - [ 0.000000,  0.000000,  0.000000,  1.000000]
+    translation_m: [0.043460, 0.018771, -0.051450]

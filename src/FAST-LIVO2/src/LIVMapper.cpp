@@ -1071,6 +1071,7 @@ bool LIVMapper::sync_packages(LidarMeasureGroup &meas)
     sig_buffer.notify_all();
 
     meas.lio_vio_flg = LIO; // process lidar topic, so timestamp should be lidar scan end.
+    meas.last_lio_update_time = meas.lidar_frame_end_time;
     meas.measures.push_back(m);
     // ROS_INFO("ONlY HAS LiDAR and IMU, NO IMAGE!");
     lidar_pushed = false; // sync one whole lidar scan.
@@ -1331,7 +1332,7 @@ void LIVMapper::publish_frame_world(const rclcpp::Publisher<sensor_msgs::msg::Po
   { 
     pcl::toROSMsg(*pcl_w_wait_pub, laserCloudmsg); 
   }
-  laserCloudmsg.header.stamp = this->node->get_clock()->now(); //.fromSec(last_timestamp_lidar);
+  laserCloudmsg.header.stamp = rclcpp::Time(static_cast<int64_t>(LidarMeasures.last_lio_update_time * 1e9));
   laserCloudmsg.header.frame_id = "camera_init";
   pubLaserCloudFullRes->publish(laserCloudmsg);
 
@@ -1431,7 +1432,7 @@ void LIVMapper::publish_odometry(const rclcpp::Publisher<nav_msgs::msg::Odometry
 {
   odomAftMapped.header.frame_id = "camera_init";
   odomAftMapped.child_frame_id = "aft_mapped";
-  odomAftMapped.header.stamp = this->node->get_clock()->now(); //.ros::Time()fromSec(last_timestamp_lidar);
+  odomAftMapped.header.stamp = rclcpp::Time(static_cast<int64_t>(LidarMeasures.last_lio_update_time * 1e9));
   set_posestamp(odomAftMapped.pose.pose);
 
   static std::shared_ptr<tf2_ros::TransformBroadcaster> br;
@@ -1450,7 +1451,7 @@ void LIVMapper::publish_odometry(const rclcpp::Publisher<nav_msgs::msg::Odometry
 
 void LIVMapper::publish_mavros(const rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr &mavros_pose_publisher)
 {
-  msg_body_pose.header.stamp = this->node->get_clock()->now();
+  msg_body_pose.header.stamp = rclcpp::Time(static_cast<int64_t>(LidarMeasures.last_lio_update_time * 1e9));
   msg_body_pose.header.frame_id = "camera_init";
   set_posestamp(msg_body_pose.pose);
   mavros_pose_publisher->publish(msg_body_pose);

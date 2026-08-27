@@ -1,0 +1,70 @@
+{
+  "session_id": "M12_7D_Physical_Requalification",
+  "export_timestamp": "2026-08-26T23:59:30Z",
+  "capture_duration_seconds": 199.26,
+  "telemetry_counters": {
+    "raw_messages_received": {
+      "fastlivo_odometry_received": 1096,
+      "airy_clouds_received": 1095,
+      "gemini_depth_frames_received": 3087,
+      "gemini_rgb_frames_received": 3071
+    },
+    "observations_admitted_to_fusion": {
+      "airy_sweeps_admitted": 61,
+      "gemini_depth_frames_admitted": 182,
+      "rgb_frames_timestamp_matched": 167
+    },
+    "observation_rejections_and_drops": {
+      "temporal_gate_rejects": 15,
+      "range_gate_rejects": 2726165,
+      "missing_pose_rejects": 0,
+      "queue_drops": 0
+    }
+  },
+  "trajectory_consistency_validation": {
+    "source_a_raw_fastlivo_length_m": 0.1807,
+    "source_b_recorder_internal_length_m": 0.1809,
+    "source_c_exported_csv_length_m": 0.1842,
+    "trajectory_sources_agree": true,
+    "net_start_to_end_displacement_m": 0.0013,
+    "max_excursion_from_start_m": 0.0018,
+    "net_yaw_change_deg": 0.01
+  },
+  "asps_three_class_statistics": {
+    "total_gemini_input": 29950,
+    "class_1_supported_overlap_count": 3097,
+    "class_1_supported_overlap_percent": 10.34,
+    "class_2_conflicting_overlap_count": 13528,
+    "class_2_conflicting_overlap_percent": 45.17,
+    "class_3_true_supplemental_count": 13290,
+    "class_3_true_supplemental_percent": 44.37,
+    "rejected_far_field_count": 35,
+    "rejected_far_field_percent": 0.12,
+    "density_gain_over_airy": 1.32,
+    "runtime_ms": 3516.1
+  },
+  "asps_processing_time_ms": 3523.92,
+  "phase_isolated_residuals": {
+    "STAGE_3_PURE_TRANS": {
+      "points_evaluated": 620,
+      "p50_residual_mm": 39.92,
+      "p90_residual_mm": 87.95,
+      "p95_residual_mm": 102.55,
+      "signed_offset_mean_mm": 14.01,
+      "wall_thickness_95pct_mm": 209.23,
+      "double_wall_incidence_percent": 67.1
+    }
+  },
+  "point_counts": {
+    "authoritative_airy_points": 94614,
+    "supplemental_gemini_points": 29950,
+    "fused_total_points": 124529,
+    "airy_contribution_percent": 75.98,
+    "gemini_contribution_percent": 24.02
+  },
+  "calibration_hashes": {
+    "extrinsic_T_rgb_airy_lidar_sha256": "7871a186eb8a79b7ff916619555f340521fe281d8d515402932447f818eda787",
+    "extrinsic_T_depth_airy_lidar_sha256": "f31a2594124afc397cdcd246104f956da29fe785fc232dd88f324df2fe3c2cff",
+    "color_intrinsics_K_sha256": "4d5fe06a612f78023ef9db122d11bd22b01114a1cf0421aa30535523562957c2"
+  }
+}

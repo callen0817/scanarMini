@@ -229,7 +229,7 @@ void SourceDriver::putPointCloud(std::shared_ptr<LidarPointCloudMsg> msg)
     std::cout << "[STAGE B - Decoder Callback] Total Sweeps: " << cnt 
               << " | Instant Cadence: " << (50.0 / dt) << " Hz" << std::endl;
   }
-  while (point_cloud_queue_.size() >= 2) {
+  while (point_cloud_queue_.size() >= 16) {
     auto dropped = point_cloud_queue_.pop();
     if (dropped) {
       free_point_cloud_queue_.push(dropped);

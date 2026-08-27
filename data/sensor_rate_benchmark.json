@@ -1,0 +1,68 @@
+{
+  "/rslidar_points": {
+    "tag": "rslidar_points",
+    "nominal_hz": 10.0,
+    "messages_received": 91,
+    "measured_rate_hz": 9.01,
+    "median_dt_ms": 93.62,
+    "p95_dt_ms": 243.23,
+    "min_dt_ms": 24.07,
+    "max_dt_ms": 622.23,
+    "gap_count": 10
+  },
+  "/rslidar_imu_data": {
+    "tag": "rslidar_imu_data",
+    "nominal_hz": 200.0,
+    "messages_received": 1994,
+    "measured_rate_hz": 199.24,
+    "median_dt_ms": 3.99,
+    "p95_dt_ms": 13.02,
+    "min_dt_ms": 0.58,
+    "max_dt_ms": 86.66,
+    "gap_count": 223
+  },
+  "/aft_mapped_to_init": {
+    "tag": "fastlivo_odom",
+    "nominal_hz": 10.0,
+    "messages_received": 95,
+    "measured_rate_hz": 10.39,
+    "median_dt_ms": 81.49,
+    "p95_dt_ms": 216.79,
+    "min_dt_ms": 21.93,
+    "max_dt_ms": 307.07,
+    "gap_count": 6
+  },
+  "/cloud_registered": {
+    "tag": "cloud_registered",
+    "nominal_hz": 10.0,
+    "messages_received": 33,
+    "measured_rate_hz": 3.75,
+    "median_dt_ms": 209.95,
+    "p95_dt_ms": 565.71,
+    "min_dt_ms": 58.99,
+    "max_dt_ms": 1123.81,
+    "gap_count": 17
+  },
+  "/camera/depth/image_raw": {
+    "tag": "camera_depth",
+    "nominal_hz": 30.0,
+    "messages_received": 196,
+    "measured_rate_hz": 19.7,
+    "median_dt_ms": 35.45,
+    "p95_dt_ms": 133.87,
+    "min_dt_ms": 1.88,
+    "max_dt_ms": 261.72,
+    "gap_count": 40
+  },
+  "/camera/color/image_raw": {
+    "tag": "camera_rgb",
+    "nominal_hz": 30.0,
+    "messages_received": 224,
+    "measured_rate_hz": 22.81,
+    "median_dt_ms": 35.93,
+    "p95_dt_ms": 91.62,
+    "min_dt_ms": 7.65,
+    "max_dt_ms": 168.44,
+    "gap_count": 35
+  }
+}

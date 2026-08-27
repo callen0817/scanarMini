@@ -1,0 +1,68 @@
+{
+  "session_id": "M12_7_Preflight_Trial",
+  "export_timestamp": "2026-08-25T20:56:22Z",
+  "capture_duration_seconds": 3.0,
+  "telemetry_counters": {
+    "raw_messages_received": {
+      "fastlivo_odometry_received": 43,
+      "airy_clouds_received": 46,
+      "gemini_depth_frames_received": 66,
+      "gemini_rgb_frames_received": 94
+    },
+    "observations_admitted_to_fusion": {
+      "airy_sweeps_admitted": 6,
+      "gemini_depth_frames_admitted": 11,
+      "rgb_frames_timestamp_matched": 3
+    },
+    "observation_rejections_and_drops": {
+      "temporal_gate_rejects": 8,
+      "range_gate_rejects": 37026,
+      "missing_pose_rejects": 23,
+      "queue_drops": 0
+    }
+  },
+  "trajectory_consistency_validation": {
+    "source_a_raw_fastlivo_length_m": 0.0252,
+    "source_b_recorder_internal_length_m": 0.0252,
+    "source_c_exported_csv_length_m": 0.0252,
+    "trajectory_sources_agree": true,
+    "net_start_to_end_displacement_m": 0.0031,
+    "max_excursion_from_start_m": 0.006,
+    "net_yaw_change_deg": 0.05
+  },
+  "asps_three_class_statistics": {
+    "total_gemini_input": 80082,
+    "class_1_supported_overlap_count": 466,
+    "class_1_supported_overlap_percent": 0.58,
+    "class_2_conflicting_overlap_count": 1514,
+    "class_2_conflicting_overlap_percent": 1.89,
+    "class_3_true_supplemental_count": 75442,
+    "class_3_true_supplemental_percent": 94.21,
+    "rejected_far_field_count": 2660,
+    "rejected_far_field_percent": 3.32,
+    "density_gain_over_airy": 1.77,
+    "runtime_ms": 1271.23
+  },
+  "asps_processing_time_ms": 1273.14,
+  "phase_isolated_residuals": {
+    "TRIAL_PHASE": {
+      "points_evaluated": 553,
+      "p50_residual_mm": 76.22,
+      "p90_residual_mm": 138.66,
+      "p95_residual_mm": 149.69,
+      "signed_offset_mean_mm": -4.3
+    }
+  },
+  "point_counts": {
+    "authoritative_airy_points": 99932,
+    "supplemental_gemini_points": 80082,
+    "fused_total_points": 177354,
+    "airy_contribution_percent": 56.35,
+    "gemini_contribution_percent": 43.65
+  },
+  "calibration_hashes": {
+    "extrinsic_T_rgb_airy_lidar_sha256": "2d2cec54f39fe75b77e850badffc7a019725548b2d67cc180d8f139579f94a95",
+    "extrinsic_T_depth_airy_lidar_sha256": "a545a6faf0b45f14c57845320f9d55250123a25bc743ce2505989b5b9abdf7be",
+    "color_intrinsics_K_sha256": "4d5fe06a612f78023ef9db122d11bd22b01114a1cf0421aa30535523562957c2"
+  }
+}

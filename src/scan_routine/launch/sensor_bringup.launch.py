@@ -34,8 +34,8 @@ def generate_launch_description():
         PythonLaunchDescriptionSource(orbbec_launch_file),
         launch_arguments={
             'camera_name': 'camera',
-            'enable_left_ir': 'true',
-            'enable_right_ir': 'true',
+            'enable_left_ir': 'false',
+            'enable_right_ir': 'false',
             'enable_color': 'true',
             'enable_depth': 'true',
             'enable_laser': 'true', # Production: Laser ON by default for active stereo depth

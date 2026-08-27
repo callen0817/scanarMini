@@ -1,0 +1,65 @@
+{
+  "duration_seconds": 60.0,
+  "airy_hardware_trigger": {
+    "motor_rpm": 600,
+    "physical_rotations_per_sec": 10.0,
+    "pulses_per_revolution": 3,
+    "pulse_spacing_deg": [
+      0,
+      120,
+      240
+    ],
+    "expected_trigger_rate_hz": 30.0,
+    "expected_total_pulses": 1800
+  },
+  "gemini_depth_stream": {
+    "count": 1179,
+    "expected_count": 1800,
+    "delivery_pct": 65.5,
+    "average_hz": 20.43,
+    "header_dt_distribution": {
+      "p1_ms": 29.46,
+      "p5_ms": 32.7,
+      "p25_ms": 33.3,
+      "p50_ms": 33.39,
+      "p75_ms": 66.58,
+      "p95_ms": 100.3,
+      "p99_ms": 166.67,
+      "min_ms": 25.18,
+      "max_ms": 233.38
+    },
+    "trigger_cadence_breakdown": {
+      "1x_trigger_33ms_delivered": 816,
+      "2x_trigger_66ms_1_dropped": 239,
+      "3x_trigger_100ms_2_dropped": 75,
+      "multi_skip_over_110ms": 48,
+      "total_estimated_dropped_triggers": 556
+    }
+  },
+  "gemini_rgb_stream": {
+    "count": 1436,
+    "expected_count": 1800,
+    "delivery_pct": 79.78,
+    "average_hz": 24.87,
+    "header_dt_distribution": {
+      "p1_ms": 27.69,
+      "p5_ms": 32.55,
+      "p25_ms": 33.27,
+      "p50_ms": 33.34,
+      "p75_ms": 33.71,
+      "p95_ms": 66.86,
+      "p99_ms": 129.29,
+      "min_ms": 19.88,
+      "max_ms": 201.0
+    },
+    "trigger_cadence_breakdown": {
+      "1x_trigger_33ms_delivered": 1201,
+      "2x_trigger_66ms_1_dropped": 186,
+      "3x_trigger_100ms_2_dropped": 25,
+      "multi_skip_over_110ms": 19,
+      "total_estimated_dropped_triggers": 300
+    }
+  },
+  "airy_imu_count": 11991,
+  "airy_imu_hz": 199.85
+}

@@ -78,7 +78,9 @@ def generate_launch_description():
                 robosense_params_file,
                 camera_params_file,
             ],
-            output="screen"
+            output="screen",
+            respawn=True,
+            respawn_delay=2.0
         ),
 
         Node(

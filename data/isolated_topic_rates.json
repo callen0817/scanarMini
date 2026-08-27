@@ -1,0 +1,74 @@
+{
+  "/rslidar_imu_data": {
+    "topic": "/rslidar_imu_data",
+    "tag": "IMU Stream",
+    "nominal_hz": 200.0,
+    "count": 1003,
+    "isolated_hz": 200.34,
+    "med_dt_ms": 4.96,
+    "p95_dt_ms": 10.12,
+    "min_dt_ms": 0.34,
+    "max_dt_ms": 29.35,
+    "gap_count": 52
+  },
+  "/rslidar_points": {
+    "topic": "/rslidar_points",
+    "tag": "Raw Airy LiDAR Points",
+    "nominal_hz": 10.0,
+    "count": 25,
+    "isolated_hz": 4.9,
+    "med_dt_ms": 101.83,
+    "p95_dt_ms": 585.85,
+    "min_dt_ms": 95.46,
+    "max_dt_ms": 702.59,
+    "gap_count": 7
+  },
+  "/camera/color/image_raw": {
+    "topic": "/camera/color/image_raw",
+    "tag": "Gemini Color RGB Stream",
+    "nominal_hz": 30.0,
+    "count": 89,
+    "isolated_hz": 27.02,
+    "med_dt_ms": 33.55,
+    "p95_dt_ms": 68.61,
+    "min_dt_ms": 14.22,
+    "max_dt_ms": 111.34,
+    "gap_count": 6
+  },
+  "/camera/depth/image_raw": {
+    "topic": "/camera/depth/image_raw",
+    "tag": "Gemini Depth Stream",
+    "nominal_hz": 30.0,
+    "count": 80,
+    "isolated_hz": 16.04,
+    "med_dt_ms": 34.12,
+    "p95_dt_ms": 164.8,
+    "min_dt_ms": 1.32,
+    "max_dt_ms": 433.63,
+    "gap_count": 25
+  },
+  "/aft_mapped_to_init": {
+    "topic": "/aft_mapped_to_init",
+    "tag": "FAST-LIVO2 Odometry",
+    "nominal_hz": 10.0,
+    "count": 29,
+    "isolated_hz": 7.0,
+    "med_dt_ms": 108.0,
+    "p95_dt_ms": 215.97,
+    "min_dt_ms": 69.24,
+    "max_dt_ms": 708.43,
+    "gap_count": 4
+  },
+  "/cloud_registered": {
+    "topic": "/cloud_registered",
+    "tag": "FAST-LIVO2 Registered Cloud",
+    "nominal_hz": 10.0,
+    "count": 12,
+    "isolated_hz": 4.27,
+    "med_dt_ms": 192.02,
+    "p95_dt_ms": 454.48,
+    "min_dt_ms": 72.05,
+    "max_dt_ms": 505.21,
+    "gap_count": 4
+  }
+}

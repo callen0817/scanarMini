@@ -1,0 +1,212 @@
+{
+  "duration_seconds": 60.0,
+  "raw_lidar_points_cadence": {
+    "total_messages": 331,
+    "average_rate_hz": 5.52,
+    "header_timestamp_distribution": {
+      "count": 331,
+      "mean_ms": 173.35,
+      "std_ms": 126.0,
+      "min_ms": 94.82,
+      "p1_ms": 95.58,
+      "p5_ms": 95.8,
+      "p25_ms": 100.0,
+      "p50_ms": 100.1,
+      "p75_ms": 200.02,
+      "p95_ms": 400.05,
+      "p99_ms": 671.05,
+      "max_ms": 1000.08,
+      "bins": {
+        "under_75ms": 0,
+        "between_75_125ms": 200,
+        "between_125_200ms": 33,
+        "over_200ms": 97
+      }
+    },
+    "arrival_timestamp_distribution": {
+      "count": 331,
+      "mean_ms": 173.34,
+      "std_ms": 126.32,
+      "min_ms": 86.45,
+      "p1_ms": 93.08,
+      "p5_ms": 95.4,
+      "p25_ms": 99.64,
+      "p50_ms": 101.89,
+      "p75_ms": 200.41,
+      "p95_ms": 401.06,
+      "p99_ms": 672.36,
+      "max_ms": 1001.42,
+      "bins": {
+        "under_75ms": 0,
+        "between_75_125ms": 200,
+        "between_125_200ms": 34,
+        "over_200ms": 96
+      }
+    }
+  },
+  "cloud_registered_cadence": {
+    "total_messages": 137,
+    "average_rate_hz": 2.28,
+    "header_timestamp_distribution": {
+      "count": 137,
+      "mean_ms": 433.08,
+      "std_ms": 370.7,
+      "min_ms": 63.28,
+      "p1_ms": 81.04,
+      "p5_ms": 91.75,
+      "p25_ms": 195.43,
+      "p50_ms": 303.02,
+      "p75_ms": 588.27,
+      "p95_ms": 1085.43,
+      "p99_ms": 1801.56,
+      "max_ms": 1880.97,
+      "bins": {
+        "under_75ms": 1,
+        "between_75_125ms": 26,
+        "between_125_200ms": 10,
+        "over_200ms": 99
+      }
+    },
+    "arrival_timestamp_distribution": {
+      "count": 137,
+      "mean_ms": 433.07,
+      "std_ms": 370.78,
+      "min_ms": 74.71,
+      "p1_ms": 80.46,
+      "p5_ms": 90.62,
+      "p25_ms": 194.42,
+      "p50_ms": 302.28,
+      "p75_ms": 587.83,
+      "p95_ms": 1084.89,
+      "p99_ms": 1800.5,
+      "max_ms": 1881.48,
+      "bins": {
+        "under_75ms": 1,
+        "between_75_125ms": 26,
+        "between_125_200ms": 11,
+        "over_200ms": 98
+      }
+    }
+  },
+  "sweep_geometry_validation": {
+    "consecutive_clouds_analyzed": 119,
+    "mean_point_count": 72337.8,
+    "p50_point_count": 73053,
+    "mean_angular_span_deg": 360.0,
+    "p50_angular_span_deg": 360.0,
+    "max_empty_10deg_sectors": 0,
+    "complete_360_sweep_status": "PASS",
+    "sample_records_first_10": [
+      {
+        "cloud_idx": 1,
+        "dt_hdr_ms": 200.02,
+        "point_count": 73124,
+        "first_az_deg": 358.4,
+        "last_az_deg": 332.2,
+        "az_min_deg": 0.0,
+        "az_max_deg": 360.0,
+        "angular_span_deg": 360.0,
+        "empty_10deg_sectors": 0
+      },
+      {
+        "cloud_idx": 2,
+        "dt_hdr_ms": 99.98,
+        "point_count": 73157,
+        "first_az_deg": 358.4,
+        "last_az_deg": 332.2,
+        "az_min_deg": 0.0,
+        "az_max_deg": 360.0,
+        "angular_span_deg": 360.0,
+        "empty_10deg_sectors": 0
+      },
+      {
+        "cloud_idx": 3,
+        "dt_hdr_ms": 100.08,
+        "point_count": 72911,
+        "first_az_deg": 358.4,
+        "last_az_deg": 354.1,
+        "az_min_deg": 0.0,
+        "az_max_deg": 360.0,
+        "angular_span_deg": 360.0,
+        "empty_10deg_sectors": 0
+      },
+      {
+        "cloud_idx": 4,
+        "dt_hdr_ms": 199.98,
+        "point_count": 73055,
+        "first_az_deg": 358.4,
+        "last_az_deg": 332.2,
+        "az_min_deg": 0.0,
+        "az_max_deg": 360.0,
+        "angular_span_deg": 360.0,
+        "empty_10deg_sectors": 0
+      },
+      {
+        "cloud_idx": 5,
+        "dt_hdr_ms": 99.98,
+        "point_count": 73102,
+        "first_az_deg": 358.4,
+        "last_az_deg": 332.2,
+        "az_min_deg": 0.0,
+        "az_max_deg": 360.0,
+        "angular_span_deg": 360.0,
+        "empty_10deg_sectors": 0
+      },
+      {
+        "cloud_idx": 6,
+        "dt_hdr_ms": 100.02,
+        "point_count": 72966,
+        "first_az_deg": 358.4,
+        "last_az_deg": 332.4,
+        "az_min_deg": 0.0,
+        "az_max_deg": 360.0,
+        "angular_span_deg": 360.0,
+        "empty_10deg_sectors": 0
+      },
+      {
+        "cloud_idx": 7,
+        "dt_hdr_ms": 104.44,
+        "point_count": 65762,
+        "first_az_deg": 358.6,
+        "last_az_deg": 332.2,
+        "az_min_deg": 0.0,
+        "az_max_deg": 360.0,
+        "angular_span_deg": 360.0,
+        "empty_10deg_sectors": 0
+      },
+      {
+        "cloud_idx": 8,
+        "dt_hdr_ms": 95.6,
+        "point_count": 73154,
+        "first_az_deg": 358.4,
+        "last_az_deg": 332.2,
+        "az_min_deg": 0.0,
+        "az_max_deg": 360.0,
+        "angular_span_deg": 360.0,
+        "empty_10deg_sectors": 0
+      },
+      {
+        "cloud_idx": 9,
+        "dt_hdr_ms": 100.0,
+        "point_count": 73106,
+        "first_az_deg": 358.4,
+        "last_az_deg": 332.2,
+        "az_min_deg": 0.0,
+        "az_max_deg": 360.0,
+        "angular_span_deg": 360.0,
+        "empty_10deg_sectors": 0
+      },
+      {
+        "cloud_idx": 10,
+        "dt_hdr_ms": 99.98,
+        "point_count": 73378,
+        "first_az_deg": 358.4,
+        "last_az_deg": 332.2,
+        "az_min_deg": 0.0,
+        "az_max_deg": 360.0,
+        "angular_span_deg": 360.0,
+        "empty_10deg_sectors": 0
+      }
+    ]
+  }
+}

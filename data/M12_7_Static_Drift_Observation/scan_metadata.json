@@ -1,0 +1,45 @@
+{
+  "session_id": "M12_7_Controlled_Motion",
+  "export_timestamp": "2026-08-25T16:14:18Z",
+  "capture_duration_seconds": 40.25,
+  "trajectory_length_meters": 0.159,
+  "total_sweeps_recorded": 80,
+  "total_depth_frames_recorded": 47,
+  "fusion_policy": "M12.7 Production Three-Class ASPS",
+  "association_gates": {
+    "tau_snap_mm": 20.0,
+    "tau_conflict_mm": 80.0,
+    "voxel_resolution_mm": 15.0
+  },
+  "point_counts": {
+    "authoritative_airy_points": 123610,
+    "supplemental_gemini_points": 97068,
+    "fused_total_points": 213657,
+    "airy_contribution_percent": 57.85,
+    "gemini_contribution_percent": 42.15
+  },
+  "three_class_statistics": {
+    "total_gemini_input": 97068,
+    "class_1_supported_overlap_count": 2099,
+    "class_1_supported_overlap_percent": 2.16,
+    "class_2_conflicting_overlap_count": 5844,
+    "class_2_conflicting_overlap_percent": 6.02,
+    "class_3_true_supplemental_count": 82104,
+    "class_3_true_supplemental_percent": 84.58,
+    "rejected_far_field_count": 7021,
+    "rejected_far_field_percent": 7.23,
+    "density_gain_over_airy": 1.73,
+    "runtime_ms": 1262.14
+  },
+  "calibration_hashes": {
+    "extrinsic_T_rgb_airy_lidar_sha256": "2d2cec54f39fe75b77e850badffc7a019725548b2d67cc180d8f139579f94a95",
+    "extrinsic_T_depth_airy_lidar_sha256": "a545a6faf0b45f14c57845320f9d55250123a25bc743ce2505989b5b9abdf7be",
+    "color_intrinsics_K_sha256": "4d5fe06a612f78023ef9db122d11bd22b01114a1cf0421aa30535523562957c2"
+  },
+  "system_qualification": {
+    "slam_backend": "FAST-LIVO2 (Authoritative Trajectory & Geometry, Frozen M10)",
+    "live_preview_path": "Real-Time Selective Source Decimation (<20ms)",
+    "final_export_path": "Three-Class Adaptive Surface Projection & Snapping",
+    "status": "QUALIFIED"
+  }
+}

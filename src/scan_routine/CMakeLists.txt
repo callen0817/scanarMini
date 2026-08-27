@@ -7,11 +7,17 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
-find_package(rclpy REQUIRED)
+find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
-# uncomment the following section in order to fill in
-# further dependencies manually.
-# find_package(<dependency> REQUIRED)
+find_package(nav_msgs REQUIRED)
+
+add_executable(cpp_lidar_cadence_monitor src/cpp_lidar_cadence_monitor.cpp)
+ament_target_dependencies(cpp_lidar_cadence_monitor rclcpp sensor_msgs nav_msgs)
+
+install(TARGETS
+  cpp_lidar_cadence_monitor
+  DESTINATION lib/${PROJECT_NAME}
+)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

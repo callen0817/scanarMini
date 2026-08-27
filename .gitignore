@@ -25,6 +25,11 @@ core*
 .DS_Store
 
 # Exclude large data bagfiles / raw dumps
+data/**/*.bag
+data/**/*.db3
+data/**/*.pcd
+data/**/*.ply
 data/*.bag
 data/*.db3
 data/*.pcd
+data/*.ply

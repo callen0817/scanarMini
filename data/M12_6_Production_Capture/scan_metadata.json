@@ -1,0 +1,40 @@
+{
+  "session_id": "M12_6_Production_Capture",
+  "export_timestamp": "2026-08-25T15:08:01Z",
+  "capture_duration_seconds": 20.2,
+  "trajectory_length_meters": 0.075,
+  "total_sweeps_recorded": 62,
+  "total_depth_frames_recorded": 27,
+  "fusion_method": "ASPS (Adaptive Surface Projection & Snapping)",
+  "association_tolerance_mm": 20.0,
+  "voxel_resolution_mm": 15.0,
+  "point_counts": {
+    "authoritative_airy_points": 116644,
+    "supplemental_gemini_points": 92864,
+    "fused_total_points": 182435,
+    "airy_contribution_percent": 63.94,
+    "gemini_contribution_percent": 36.06
+  },
+  "asps_classification_statistics": {
+    "total_gemini_candidates": 92864,
+    "snapped_overlap_points": 4147,
+    "snapped_overlap_percent": 4.47,
+    "rejected_far_field_points": 27073,
+    "rejected_far_field_percent": 29.15,
+    "retained_gemini_only_points": 61644,
+    "retained_gemini_only_percent": 66.38,
+    "density_gain_over_airy": 1.56
+  },
+  "calibration_hashes": {
+    "extrinsic_T_rgb_airy_lidar_sha256": "2d2cec54f39fe75b77e850badffc7a019725548b2d67cc180d8f139579f94a95",
+    "extrinsic_T_depth_airy_lidar_sha256": "a545a6faf0b45f14c57845320f9d55250123a25bc743ce2505989b5b9abdf7be",
+    "color_intrinsics_K_sha256": "4d5fe06a612f78023ef9db122d11bd22b01114a1cf0421aa30535523562957c2"
+  },
+  "system_hardware": {
+    "lidar_model": "RoboSense Airy 192 (10Hz Master)",
+    "imu_model": "RoboSense Internal IMU (200Hz)",
+    "camera_model": "Orbbec Gemini 336L (Stereo Depth 30Hz + RGB 30Hz)",
+    "slam_backend": "FAST-LIVO2 (Authoritative Trajectory & Geometry)",
+    "fusion_engine": "Dual-Path Real-Time SSD (Live GUI) + Post-LIO ASPS (Final Export)"
+  }
+}

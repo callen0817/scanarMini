@@ -33,3 +33,17 @@ data/*.bag
 data/*.db3
 data/*.pcd
 data/*.ply
+
+# ROS 2 bags anywhere in the repo (sqlite3 / mcap storage)
+*.db3
+*.mcap
+
+# Raw capture dumps, ephemeral bag directories, and point cloud exports under diagnostics/
+diagnostics/m12_9_room_dataset/
+diagnostics/m12_9_room_export/
+diagnostics/m12_9a_*/
+diagnostics/**/*.ply
+diagnostics/**/*.pcd
+
+# Editor settings
+.vscode/

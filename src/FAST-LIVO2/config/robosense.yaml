@@ -9,19 +9,21 @@
       ros_driver_bug_fix: false
 
     extrin_calib:
-      # RoboSense Airy Internal IMU Factory DIFOP Calibration
+      # RoboSense Airy Internal IMU Validated LIO Calibration
       # Translation from LiDAR origin expressed in IMU frame (meters)
       extrinsic_T: [0.004164, 0.004315, -0.004411]
       # Rotation from LiDAR frame to IMU frame (Row-major R_imu_from_lidar)
-      extrinsic_R: [ 0.012366, -0.999888,  0.008426,
-                    -0.999919, -0.012340,  0.003184,
-                    -0.003079, -0.008465, -0.999959]
-      # Rotation Camera (cam0 optical) from LiDAR (rslidar) -> Rcl = R_cam_from_lidar
-      Rcl: [ 0.000000, -1.000000,  0.000000,
-             0.000000,  0.000000, -1.000000,
-             1.000000,  0.000000,  0.000000]
+      extrinsic_R: [
+        0.012366, -0.999888, 0.008426,
+        -0.999919, -0.012340, 0.003184,
+        -0.003079, -0.008465, -0.999959
+      ]
+      # Rotation Camera (cam0 optical) from LiDAR (rslidar) -> Rcl = R_cam_from_lidar (Device 2 / scanarV4 45-deg)
+      Rcl: [-0.999975,  0.008047,  0.001545,
+            -0.004515, -0.698495,  0.715601,
+             0.006838,  0.715576,  0.698514]
       # Position Camera from LiDAR (meters) -> Pcl = t_cam_from_lidar
-      Pcl: [0.047640, 0.014311, -0.055700]
+      Pcl: [0.043475, -0.050779, -0.029993]
 
     time_offset: 
       imu_time_offset: 0.0
@@ -72,7 +74,7 @@
 
     uav:
       imu_rate_odom: false
-      gravity_align_en: false
+      gravity_align_en: true
 
     publish:
       dense_map_en: true

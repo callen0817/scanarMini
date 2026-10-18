@@ -1,0 +1,17 @@
+{
+  "session_id": "M12_8B_Closed_Loop_01",
+  "export_timestamp": "2026-08-29T23:56:43Z",
+  "capture_duration_seconds": 30.2,
+  "point_counts": {
+    "authoritative_airy_points": 1501444,
+    "supplemental_gemini_points": 1677749,
+    "fused_total_points": 2641186,
+    "density_multiplier": 1.76
+  },
+  "sensor_telemetry": {
+    "fastlivo_odometry_received": 1295,
+    "airy_sweeps_received": 1295,
+    "gemini_depth_frames_received": 2066,
+    "gemini_rgb_frames_received": 4175
+  }
+}

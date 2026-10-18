@@ -58,6 +58,12 @@ def generate_launch_description():
         }.items()
     )
 
+    # 2.5. Verify Airy Hardware SYNC_OUT1 pulse step (120 deg) & pulse width (1 ms)
+    verify_sync_process = ExecuteProcess(
+        cmd=['python3', '/home/scanar/scanarMini/src/scan_routine/scripts/verify_airy_sync.py'],
+        output='screen'
+    )
+
     # 3. Topic Remapping Process using our custom pure-python relay script (eliminates dependency on topic_tools)
     cam_remapper_process = ExecuteProcess(
         cmd=['python3', '/home/scanar/scanarMini/src/scan_routine/scripts/topic_relay.py'],
@@ -84,16 +90,16 @@ def generate_launch_description():
                    'rslidar', 'airy_imu']
     )
 
-    # T_cam0_lidar translation: [+0.047640, +0.014311, -0.055700] m
+    # T_cam0_lidar translation: [+0.043475, -0.050779, -0.029993] m (scanarV4 45-deg)
     # Inverted T_lidar_cam0 for ROS static TF:
-    # Translation: [+0.055700, +0.047640, +0.014311] m
-    # Rotation (inverse of [0.5, -0.5, 0.5, 0.5]): [-0.5, 0.5, -0.5, 0.5]
+    # Translation: [+0.043450, -0.014356, +0.057221] m
+    # Quaternion [qx, qy, qz, qw]: [0.002274, 0.388254, 0.921543, 0.003408]
     tf_lidar_to_cam0 = Node(
         package='tf2_ros',
         executable='static_transform_publisher',
         name='tf_lidar_to_cam0',
-        arguments=['0.055700', '0.047640', '0.014311', 
-                   '-0.5', '0.5', '-0.5', '0.5', 
+        arguments=['0.043450', '-0.014356', '0.057221', 
+                   '0.002274', '0.388254', '0.921543', '0.003408', 
                    'rslidar', 'camera_left_ir_optical_frame']
     )
 
@@ -118,6 +124,7 @@ def generate_launch_description():
     )
 
     return LaunchDescription([
+        verify_sync_process,
         rslidar_node,
         camera_node,
         cam_remapper_process,

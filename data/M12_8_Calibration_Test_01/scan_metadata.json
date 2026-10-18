@@ -1,0 +1,17 @@
+{
+  "session_id": "M12_8_Calibration_Test_01",
+  "export_timestamp": "2026-08-29T20:39:43Z",
+  "capture_duration_seconds": 10.15,
+  "point_counts": {
+    "authoritative_airy_points": 134121,
+    "supplemental_gemini_points": 24604,
+    "fused_total_points": 147862,
+    "density_multiplier": 1.1
+  },
+  "sensor_telemetry": {
+    "fastlivo_odometry_received": 179,
+    "airy_sweeps_received": 179,
+    "gemini_depth_frames_received": 273,
+    "gemini_rgb_frames_received": 653
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "session_id": "M12_8_Field_Scan_01",
+  "export_timestamp": "2026-08-29T18:50:46Z",
+  "capture_duration_seconds": 30.28,
+  "point_counts": {
+    "authoritative_airy_points": 241933,
+    "supplemental_gemini_points": 354742,
+    "fused_total_points": 572962,
+    "density_multiplier": 2.37
+  },
+  "sensor_telemetry": {
+    "fastlivo_odometry_received": 850,
+    "airy_sweeps_received": 851,
+    "gemini_depth_frames_received": 1767,
+    "gemini_rgb_frames_received": 2660
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "session_id": "M12_8_Live_Walk_Scan_01",
+  "export_timestamp": "2026-08-29T22:29:27Z",
+  "capture_duration_seconds": 30.16,
+  "point_counts": {
+    "authoritative_airy_points": 1081827,
+    "supplemental_gemini_points": 3206066,
+    "fused_total_points": 3280387,
+    "density_multiplier": 3.03
+  },
+  "sensor_telemetry": {
+    "fastlivo_odometry_received": 1368,
+    "airy_sweeps_received": 1366,
+    "gemini_depth_frames_received": 2418,
+    "gemini_rgb_frames_received": 4789
+  }
+}

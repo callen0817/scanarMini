@@ -3289,12 +3289,12 @@ class ScanHUBOS(QWidget):
 
         try:
             self.sensor_stack_proc = subprocess.Popen(
-                ["bash", "-c", f"{setup_cmd} && exec ros2 launch scan_bringup sensor_bringup.launch.py"],
+                ["bash", "-c", f"{setup_cmd} && exec ros2 launch scan_routine sensor_bringup.launch.py"],
                 cwd=ws, env=env, preexec_fn=os.setsid,
                 stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL
             )
             self.slam_stack_proc = subprocess.Popen(
-                ["bash", "-c", f"{setup_cmd} && sleep 2 && exec ros2 launch fast_lio mapping_robosense.launch.py rviz:=false"],
+                ["bash", "-c", f"{setup_cmd} && sleep 2 && exec ros2 launch fast_livo mapping_robosense.launch.py use_rviz:=false"],
                 cwd=ws, env=env, preexec_fn=os.setsid,
                 stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL
             )
@@ -3302,7 +3302,7 @@ class ScanHUBOS(QWidget):
             self.stack_btn.setStyleSheet(
                 "background: rgba(239, 68, 68, 0.20); border: 1px solid #F87171; color: #FCA5A5; padding: 6px 14px; border-radius: 9px; font-weight: 600; font-size: 11px;"
             )
-            self.console.append("[STACK] Launched sensor_bringup.launch.py + mapping_robosense.launch.py (rviz:=false).")
+            self.console.append("[STACK] Launched sensor_bringup.launch.py + mapping_robosense.launch.py (use_rviz:=false).")
         except Exception as e:
             self.console.append(f"[STACK ERROR] Failed to start ROS 2 stack: {e}")
 

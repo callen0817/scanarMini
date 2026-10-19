@@ -575,20 +575,27 @@ class Ros2BridgeWorker(QThread):
         self.using_slam_odom = False
         self.last_slam_time = 0.0
         self.last_lidar_time = 0.0
+        self.last_rslidar_time = 0.0
         self.last_camera_time = 0.0
         self.last_depth_time = 0.0
         self.last_imu_msg_time = 0.0
         self.last_slam_msg_time = 0.0
         self.cnt_camera = 0
         self.cnt_lidar = 0
+        self.cnt_rslidar = 0
         self.cnt_imu = 0
         self.cnt_slam = 0
         self.cnt_livo_diag = 0
         self.cnt_depth_gated_turn = 0
         self.stable_motion_start = None
         self._last_image_emit = 0.0
+        self._last_depth_voxel_time = 0.0
+        self._last_map_dispatch_time = 0.0
+        self._cached_map_points_data = None
+        self.ros_node = None
 
         # Rolling timestamp queues for real-time Hz monitoring
+        self._ts_rslidar = deque(maxlen=100)
         self._ts_lidar = deque(maxlen=100)
         self._ts_camera = deque(maxlen=150)
         self._ts_depth = deque(maxlen=150)
@@ -728,11 +735,12 @@ class Ros2BridgeWorker(QThread):
                 b_c = 210 if is_floor else 169
                 self.live_airy_voxels[(gx, gy, gz)] = [x, y, z, r_c, g_c, b_c, 1]
 
-    def extract_raw_3d_points_for_mode(self, mode: str) -> np.ndarray:
+    def extract_raw_3d_points_for_mode(self, mode: str, airy_vals=None, stereo_vals=None) -> np.ndarray:
         """Extracts (N, 6) float32 array [x, y, z, r, g, b] (RGB 0..255) for the active display mode."""
-        with self.lock:
-            airy_vals = list(self.live_airy_voxels.values())
-            stereo_vals = list(self.live_stereo_voxels.values())
+        if airy_vals is None or stereo_vals is None:
+            with self.lock:
+                airy_vals = list(self.live_airy_voxels.values())
+                stereo_vals = list(self.live_stereo_voxels.values())
 
         pts_list = []
         if mode == "airy_only":
@@ -932,7 +940,7 @@ class Ros2BridgeWorker(QThread):
         def emit_composite_camera_frame():
             """Emits cleanly isolated side-by-side RGB (Left) and Depth Heatmap (Right)."""
             now = time.time()
-            if now - self._last_image_emit < 0.040: # Max 25 FPS
+            if now - self._last_image_emit < 0.066: # Max ~15 FPS to conserve Jetson CPU
                 return
             self._last_image_emit = now
 
@@ -1037,6 +1045,12 @@ class Ros2BridgeWorker(QThread):
                     with self.lock:
                         self.cnt_depth_gated_turn += 1
                     return
+
+                # Throttle heavy 3D unprojection & KD-Tree agreement gating (Max 5 Hz recording, 3 Hz idle)
+                voxel_interval = 0.20 if self.is_session_recording else 0.35
+                if (now - self._last_depth_voxel_time) < voxel_interval:
+                    return
+                self._last_depth_voxel_time = now
 
                 # Unproject Subsampled Depth for Live Observability & Recording
                 sub = 16 # Fast 16x subsampling for real-time live HUD
@@ -1289,7 +1303,16 @@ class Ros2BridgeWorker(QThread):
 
             self.pose_received.emit(self.current_x, self.current_y, self.current_yaw)
 
+        def rslidar_callback(msg: PointCloud2):
+            """Fast lightweight hardware LiDAR rate tracker directly off /rslidar_points."""
+            self.cnt_rslidar += 1
+            now = time.time()
+            self.last_rslidar_time = now
+            with self.lock:
+                self._ts_rslidar.append(now)
+
         # Topic Subscriptions
+        node.create_subscription(PointCloud2, "/rslidar_points", rslidar_callback, qos_profile_sensor_data)
         node.create_subscription(Image, "/camera/color/image_raw", rgb_color_callback, qos_profile_sensor_data)
         node.create_subscription(Image, "/camera/depth/image_raw", depth_callback, qos_profile_sensor_data)
         node.create_subscription(CameraInfo, "/camera/color/camera_info", rgb_info_callback, qos_profile_sensor_data)
@@ -1297,28 +1320,39 @@ class Ros2BridgeWorker(QThread):
         node.create_subscription(PointCloud2, "/cloud_registered", registered_cloud_callback, qos_profile_sensor_data)
         node.create_subscription(Odometry, "/aft_mapped_to_init", slam_odom_callback, qos_profile_sensor_data)
 
-        # Periodic UI Telemetry & Point Slicing Timer
+        # Dedicated ROS 2 Spin Thread to ensure zero callback starvation
+        self.ros_node = node
+        def spin_ros():
+            while self.running and rclpy.ok():
+                try:
+                    rclpy.spin_once(node, timeout_sec=0.02)
+                except Exception:
+                    time.sleep(0.01)
+
+        spin_thread = threading.Thread(target=spin_ros, daemon=True, name="ROS2_Spin_Thread")
+        spin_thread.start()
+
+        # Periodic UI Telemetry & Point Slicing Loop (10 Hz)
         last_emit_time = 0.0
         while self.running and rclpy.ok():
-            try:
-                rclpy.spin_once(node, timeout_sec=0.03)
-            except Exception:
-                pass
-
             now = time.time()
             if now - last_emit_time >= 0.10: # 10 Hz UI Update Loop
                 last_emit_time = now
-                self.dispatch_live_map_and_telemetry()
+                try:
+                    self.dispatch_live_map_and_telemetry()
+                except Exception:
+                    pass
+            time.sleep(0.02)
 
         node.destroy_node()
 
-    def _compute_rate(self, ts_deque, now, window=2.0):
+    def _compute_rate(self, ts_deque, now, window=3.5):
         while len(ts_deque) > 0 and (now - ts_deque[0]) > window:
             ts_deque.popleft()
         if len(ts_deque) < 2:
             return 0.0
-        span = max(0.2, now - ts_deque[0])
-        return len(ts_deque) / span
+        span = max(0.2, ts_deque[-1] - ts_deque[0])
+        return (len(ts_deque) - 1) / span
 
     def dispatch_live_map_and_telemetry(self):
         """Prepares sliced points (with M12 Real-Time Cleanup & C-SLAM Multi-Scanner Merge) and live telemetry for HUD map visualization."""
@@ -1328,12 +1362,15 @@ class Ros2BridgeWorker(QThread):
             airy_dict = dict(self.live_airy_voxels)
             stereo_dict = dict(self.live_stereo_voxels)
             elev_stats = dict(self.live_elevation_stats)
+            rslidar_hz = self._compute_rate(self._ts_rslidar, now)
             lidar_hz = self._compute_rate(self._ts_lidar, now)
             camera_hz = self._compute_rate(self._ts_camera, now)
             depth_hz = self._compute_rate(self._ts_depth, now)
             slam_hz = self._compute_rate(self._ts_slam, now)
+            rslidar_age = (now - self.last_rslidar_time) if self.last_rslidar_time > 0 else 999.0
             lidar_age = (now - self.last_lidar_time) if self.last_lidar_time > 0 else 999.0
             camera_age = (now - self.last_camera_time) if self.last_camera_time > 0 else 999.0
+            depth_age = (now - self.last_depth_time) if self.last_depth_time > 0 else 999.0
             slam_age = (now - self.last_slam_time) if self.last_slam_time > 0 else 999.0
             lin_spd = self.current_lin_speed
             ang_spd = self.current_ang_speed
@@ -1345,6 +1382,8 @@ class Ros2BridgeWorker(QThread):
             m12_cfg = self.m12_params
             cur_x, cur_y, cur_z = self.current_x, self.current_y, self.current_z
             cur_q = list(self.current_quat)
+            stats_snap = self.last_cleanup_stats
+            rt_ms = self.live_cleanup_time_ms
 
         n_airy = len(airy_dict)
         n_stereo = len(stereo_dict)
@@ -1365,11 +1404,62 @@ class Ros2BridgeWorker(QThread):
         wall_pct = (elev_stats.get("wall", 0) / t_elev) * 100.0
         ceil_pct = (elev_stats.get("ceiling", 0) / t_elev) * 100.0
 
+        cslam_summary = self.cslam_engine.get_status_summary()
+
+        telemetry = {
+            "n_airy": n_airy,
+            "n_stereo": n_stereo,
+            "n_fused": n_airy + n_accepted,
+            "rgb_cov_pct": rgb_cov_pct,
+            "dual_cov_pct": dual_cov_pct,
+            "n_accepted": n_accepted,
+            "n_rejected": n_rejected,
+            "stereo_accept_pct": stereo_accept_pct,
+            "floor_pct": floor_pct,
+            "wall_pct": wall_pct,
+            "ceil_pct": ceil_pct,
+            "depth_min": self.depth_min_m,
+            "depth_max": self.depth_max_m,
+            "rslidar_hz": rslidar_hz,
+            "rslidar_age": rslidar_age,
+            "lidar_hz": lidar_hz,
+            "camera_hz": camera_hz,
+            "depth_hz": depth_hz,
+            "slam_hz": slam_hz,
+            "lidar_age": lidar_age,
+            "camera_age": camera_age,
+            "depth_age": depth_age,
+            "slam_age": slam_age,
+            "lin_speed": lin_spd,
+            "ang_speed": ang_spd,
+            "gated_turns": gated_turns,
+            "m12_live_enabled": live_clean_on,
+            "m12_ground_lock": live_ground_on,
+            "m12_preview_active": preview_on,
+            "m12_time_ms": stats_snap.processing_time_ms if preview_on else rt_ms,
+            "m12_input_pts": stats_snap.input_points,
+            "m12_output_pts": stats_snap.output_points,
+            "m12_tilt_deg": stats_snap.ground_result.tilt_angle_deg,
+            "cslam": cslam_summary,
+        }
+        self.telemetry_updated.emit(telemetry)
+
+        # Throttle heavy point extraction, M12 cleanup, C-SLAM merge, and map display to max ~3.3 Hz (every 0.30s)
+        should_refresh_map = (
+            preview_on or
+            self._cached_map_points_data is None or
+            (now - self._last_map_dispatch_time >= 0.30)
+        )
+        if not should_refresh_map:
+            return
+
+        self._last_map_dispatch_time = now
+
         # Extract 3D local points [x, y, z, r, g, b] (RGB 0..255) for active mode
         if preview_on and preview_pts is not None:
             active_local_3d = preview_pts
         else:
-            active_local_3d = self.extract_raw_3d_points_for_mode(mode)
+            active_local_3d = self.extract_raw_3d_points_for_mode(mode, list(airy_dict.values()), list(stereo_dict.values()))
             if live_clean_on and len(active_local_3d) > 20:
                 rt_params = CleanupParams(
                     enable_voxel_downsample=m12_cfg.enable_voxel_downsample,
@@ -1392,7 +1482,7 @@ class Ros2BridgeWorker(QThread):
                     self.live_cleanup_time_ms = rt_stats.processing_time_ms
                     self.last_cleanup_stats = rt_stats
 
-        # Update C-SLAM local state & merge unlimited remote peer scanners
+        # Update C-SLAM local state & merge remote peer scanners
         try:
             imu_rpy = tuple(Rotation.from_quat(cur_q).as_euler("xyz", degrees=False))
         except Exception:
@@ -1413,55 +1503,14 @@ class Ros2BridgeWorker(QThread):
         merged_3d, peer_descriptors = self.cslam_engine.get_merged_cslam_scene(
             local_points_override=local_norm
         )
-        cslam_summary = self.cslam_engine.get_status_summary()
-
-        with self.lock:
-            stats_snap = self.last_cleanup_stats
-            rt_ms = self.live_cleanup_time_ms
-
-        telemetry = {
-            "n_airy": n_airy,
-            "n_stereo": n_stereo,
-            "n_fused": n_airy + n_accepted,
-            "rgb_cov_pct": rgb_cov_pct,
-            "dual_cov_pct": dual_cov_pct,
-            "n_accepted": n_accepted,
-            "n_rejected": n_rejected,
-            "stereo_accept_pct": stereo_accept_pct,
-            "floor_pct": floor_pct,
-            "wall_pct": wall_pct,
-            "ceil_pct": ceil_pct,
-            "depth_min": self.depth_min_m,
-            "depth_max": self.depth_max_m,
-            "lidar_hz": lidar_hz,
-            "camera_hz": camera_hz,
-            "depth_hz": depth_hz,
-            "slam_hz": slam_hz,
-            "lidar_age": lidar_age,
-            "camera_age": camera_age,
-            "slam_age": slam_age,
-            "lin_speed": lin_spd,
-            "ang_speed": ang_spd,
-            "gated_turns": gated_turns,
-            "m12_live_enabled": live_clean_on,
-            "m12_ground_lock": live_ground_on,
-            "m12_preview_active": preview_on,
-            "m12_time_ms": stats_snap.processing_time_ms if preview_on else rt_ms,
-            "m12_input_pts": stats_snap.input_points,
-            "m12_output_pts": stats_snap.output_points,
-            "m12_tilt_deg": stats_snap.ground_result.tilt_angle_deg,
-            "cslam": cslam_summary,
-        }
-        self.telemetry_updated.emit(telemetry)
 
         if len(merged_3d) == 0 and len(peer_descriptors) == 0:
             return
 
-        # Extract 2D Slice + 3D Studio Cloud from Merged 3D Scene (Local + All C-SLAM Peers)
+        # Extract 2D Slice + 3D Studio Cloud from Merged 3D Scene
         display_pts = []
         pts_3d_list = []
         if len(merged_3d) > 0:
-            # Prepare 3D points for the 3D Spatial Studio Viewport (up to 15,000 points)
             if len(merged_3d) > 15000:
                 stride_3d = max(1, len(merged_3d) // 15000)
                 cloud_3d_sub = merged_3d[::stride_3d]
@@ -1482,9 +1531,8 @@ class Ros2BridgeWorker(QThread):
             mask_slice = (rel_z >= -0.60) & (rel_z <= 1.80)
             sliced = merged_3d[mask_slice]
             if len(sliced) == 0:
-                sliced = merged_3d  # Fallback if ground leveled shifted Z outside slice
+                sliced = merged_3d
 
-            # Downsample for 60 FPS Smooth UI rendering (30,000 points via vectorized QImage splat)
             if len(sliced) > 30000:
                 stride = max(1, len(sliced) // 30000)
                 sliced = sliced[::stride]
@@ -1497,7 +1545,7 @@ class Ros2BridgeWorker(QThread):
             b_arr = np.clip(sliced[:, 5] * rgb_scale, 0, 255)
             display_pts = np.column_stack([wx_arr, wy_arr, r_arr, g_arr, b_arr]).tolist()
 
-        self.map_points_updated.emit({
+        payload = {
             "points": display_pts,
             "points_3d": pts_3d_list,
             "mode": mode,
@@ -1506,7 +1554,9 @@ class Ros2BridgeWorker(QThread):
             "cslam_color_mode": cslam_summary["color_mode"],
             "m12_live_enabled": live_clean_on,
             "m12_preview_active": preview_on,
-        })
+        }
+        self._cached_map_points_data = payload
+        self.map_points_updated.emit(payload)
 
     def start_recording_session(self):
         with self.lock:
@@ -3400,36 +3450,40 @@ class ScanHUBOS(QWidget):
             self.cslam_peer_list.setHtml("<br/>".join(html_lines))
 
         # Update Live Sensor Health & Hz Indicators
+        rslidar_hz = t.get("rslidar_hz", 0.0)
         lidar_hz = t.get("lidar_hz", 0.0)
-        lidar_age = t.get("lidar_age", 999.0)
-        if lidar_age > 2.5 or lidar_hz < 0.2:
+        active_lidar_hz = max(rslidar_hz, lidar_hz)
+        lidar_age = min(t.get("rslidar_age", 999.0), t.get("lidar_age", 999.0))
+        if lidar_age > 3.0 or active_lidar_hz < 0.2:
             self.dot_lidar.setText("● LiDAR: OFFLINE")
             self.dot_lidar.setStyleSheet(f"color: #F87171; {pill_base}")
-        elif lidar_hz < 5.0:
-            self.dot_lidar.setText(f"● LiDAR: LOW ({lidar_hz:.1f}Hz)")
+        elif active_lidar_hz < 5.0:
+            self.dot_lidar.setText(f"● LiDAR: LOW ({active_lidar_hz:.1f}Hz)")
             self.dot_lidar.setStyleSheet(f"color: #FBBF24; {pill_base}")
         else:
-            self.dot_lidar.setText(f"● LiDAR: OK ({lidar_hz:.1f}Hz)")
+            self.dot_lidar.setText(f"● LiDAR: OK ({active_lidar_hz:.1f}Hz)")
             self.dot_lidar.setStyleSheet(f"color: #4ADE80; {pill_base}")
 
         cam_hz = t.get("camera_hz", 0.0)
-        cam_age = t.get("camera_age", 999.0)
-        if cam_age > 2.5 or cam_hz < 0.2:
+        depth_hz = t.get("depth_hz", 0.0)
+        active_cam_hz = max(cam_hz, depth_hz)
+        cam_age = min(t.get("camera_age", 999.0), t.get("depth_age", 999.0))
+        if cam_age > 3.0 or active_cam_hz < 0.2:
             self.dot_camera.setText("● Camera: OFFLINE")
             self.dot_camera.setStyleSheet(f"color: #F87171; {pill_base}")
-        elif cam_hz < 8.0:
-            self.dot_camera.setText(f"● Camera: LOW ({cam_hz:.1f}Hz)")
+        elif active_cam_hz < 2.5:
+            self.dot_camera.setText(f"● Camera: LOW ({active_cam_hz:.1f}Hz)")
             self.dot_camera.setStyleSheet(f"color: #FBBF24; {pill_base}")
         else:
-            self.dot_camera.setText(f"● Camera: OK ({cam_hz:.1f}Hz)")
+            self.dot_camera.setText(f"● Camera: OK ({active_cam_hz:.1f}Hz)")
             self.dot_camera.setStyleSheet(f"color: #4ADE80; {pill_base}")
 
         slam_hz = t.get("slam_hz", 0.0)
         slam_age = t.get("slam_age", 999.0)
-        if slam_age > 2.5 or slam_hz < 0.2:
+        if slam_age > 3.0 or slam_hz < 0.2:
             self.dot_slam.setText("● SLAM: OFFLINE")
             self.dot_slam.setStyleSheet(f"color: #F87171; {pill_base}")
-        elif slam_hz < 4.0:
+        elif slam_hz < 3.0:
             self.dot_slam.setText(f"● SLAM: LOW ({slam_hz:.1f}Hz)")
             self.dot_slam.setStyleSheet(f"color: #FBBF24; {pill_base}")
         else:

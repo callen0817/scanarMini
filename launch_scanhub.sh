@@ -33,7 +33,7 @@ trap cleanup_stack EXIT INT TERM
 
 if [ "$START_STACK" -eq 1 ]; then
     echo "[scanHUB] Verifying Airy SYNC_OUT1 hardware trigger..."
-    python3 /home/scanar/scanarMini/scripts/configure_airy_ptp_sync.py --ip 192.168.1.200 --verify-only >/dev/null 2>&1 || true
+    python3 /home/scanar/scanarMini/scripts/configure_airy_sync_out.py >/dev/null 2>&1 || true
     echo "[scanHUB] Starting Sensor Bringup (Airy LiDAR + Gemini 336L)..."
     setsid ros2 launch scan_routine sensor_bringup.launch.py >/tmp/scanhub_sensor_bringup.log 2>&1 &
     SENSORS_PID=$!
